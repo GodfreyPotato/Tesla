@@ -1,0 +1,67 @@
+﻿@model IEnumerable<tesla.Models.Product>
+
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Home</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prod_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.prod_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+            @Html.DisplayNameFor(model => model.prod_img)
+              
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cat_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prod_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prod_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+                <td>
+                    <img src="@Url.Content("~/productImages/" + item.prod_img)" width="200" />
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cat_id)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
