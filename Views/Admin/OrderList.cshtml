@@ -5,31 +5,42 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Order List</h1>
+<div class="">
+    <h1>Order List</h1>
+    <form method="GET" asp-action="OrderList" asp-controller="Admin">
+        <label for="status">Filter:</label>
+        <select id="status" name="status" class="form-control" onchange="this.form.submit()">
+            <option value="">All</option>
+            <option value="preparing" >Preparing</option>
+            <option value="readytopickup">Ready To Pick Up</option>
+            <option value="received">Received</option>
+        </select>
+    </form>
+</div>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.id)
+                ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cart_id)
+                Cart ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.user_id)
+                User ID
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.address)
+                Address
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.totalAmount)
+                Total Amount
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.date)
+                Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.status)
+                Status
             </th>
             <th></th>
         </tr>
@@ -59,9 +70,7 @@
                 @Html.DisplayFor(modelItem => item.status)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Details", "OrderDetails", new { id = item.id })
             </td>
         </tr>
 }
