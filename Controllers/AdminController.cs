@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using practiceQuiz.DataAccess;
 using System.Data;
+using System.Globalization;
 using tesla.Models;
 
 namespace tesla.Controllers
@@ -38,6 +39,30 @@ namespace tesla.Controllers
             }
 
             return products;
+        }
+
+        public IActionResult OrderList() {
+            return View(getOrders());
+        }
+        public List<Order> getOrders() {
+            List<Order> orders = new List<Order>();
+
+            DataTable dt = _helper.read("SELECT * FROM orders");
+
+            foreach (DataRow dr in dt.Rows) {
+                orders.Add(new Order
+                {
+                    id = int.Parse(dr["id"].ToString()),
+                    cart_id = int.Parse(dr["cart_id"].ToString()),
+                    user_id = int.Parse(dr["user_id"].ToString()),
+                    address = dr["address"].ToString(),
+                    totalAmount = decimal.Parse(dr["totalAmount"].ToString()),
+                    date = dr["date"].ToString(), //Bale sa adding or ng order dapat naayus na or smth
+                    //ToModify na lang to
+                    status = dr["status"].ToString()
+                });
+            }
+            return orders;
         }
     }
 }

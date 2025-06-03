@@ -16,7 +16,6 @@ namespace tesla.Models
 
         [Required]
         public decimal price { get; set; }
-
        
         public string? prod_img { get; set; }
 
