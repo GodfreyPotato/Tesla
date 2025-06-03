@@ -1,0 +1,61 @@
+﻿@model tesla.Models.Product
+
+@{
+    ViewData["Title"] = "Add New Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>AddProduct</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddProduct" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="prod_name" class="control-label">Product Name</label>
+                <input asp-for="prod_name" class="form-control" />
+                <span asp-validation-for="prod_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="prod_description" class="control-label"></label>
+                <input asp-for="prod_description" class="form-control" />
+                <span asp-validation-for="prod_description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <label asp-for="prod_img" class="control-label"></label>
+                <input type="file" asp-for="ImageFile" class="form-control" />
+                <span asp-validation-for="prod_img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cat_id" class="control-label">Category</label>
+                <select name="cat_id" class="form-control">
+                    @foreach (var cat in ViewBag.Categories)
+                    {
+                        <option value="@cat.id">@cat.cat_name</option>
+                    }
+                </select>
+                <span asp-validation-for="cat_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

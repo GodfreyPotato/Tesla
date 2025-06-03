@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - tesla</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/tesla.styles.css" asp-append-version="true" />
+
+</head>
+<body>
+
+    <!-- Nav Bar -->
+    <header>
+<nav class="navbar custom-navbar">
+    <div class="container d-flex align-items-center justify-content-between">
+        
+        <!-- Left Group: Navigation Links -->
+        <div class="nav-left d-flex align-items-center gap-4">
+            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="nav-link" asp-controller="Product" asp-action="ShowProducts">Products</a>
+            <a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
+            <a class="nav-link" asp-controller="Profile" asp-action="Index">Profile</a>
+        </div>
+
+        <!-- Center Logo -->
+        <a class="navbar-brand mx-3" asp-controller="Home" asp-action="Index">
+            <img src="~/images/tesla-logo.png" alt="Tesla Logo" class="logo-img" />
+        </a>
+
+        <!-- Right Group -->
+        <div class="nav-right d-flex align-items-center gap-3">
+            <a class="nav-link" asp-controller="Account" asp-action="Login">Log In</a>
+            <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
+        </div>
+
+    </div>
+</nav>
+
+
+    </header>
+
+
+     <main role="main">
+            @RenderBody()
+     </main>
+
+
+</body>
+<!-- Footer -->
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2025 - tesla - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+
+
+
+</html>
