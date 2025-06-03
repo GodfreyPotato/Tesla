@@ -57,7 +57,7 @@ namespace tesla.Controllers
                     user_id = int.Parse(dr["user_id"].ToString()),
                     address = dr["address"].ToString(),
                     totalAmount = decimal.Parse(dr["totalAmount"].ToString()),
-                    date = dr["date"].ToString(), //Bale sa adding or ng order dapat naayus na or smth
+                    date = DateTime.Parse(dr["date"].ToString()).ToString("MMMM dd, yyyy", CultureInfo.InvariantCulture), //Bale sa adding or ng order dapat naayus na or smth
                     //ToModify na lang to
                     status = dr["status"].ToString()
                 });

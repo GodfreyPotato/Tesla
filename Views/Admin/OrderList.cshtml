@@ -5,11 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>OrderList</h1>
+<h1>Order List</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -53,7 +50,7 @@
                 @Html.DisplayFor(modelItem => item.address)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.totalAmount)
+                $@Html.DisplayFor(modelItem => item.totalAmount)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.date)
