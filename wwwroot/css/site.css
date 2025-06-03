@@ -47,11 +47,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Form controls */
-input.form-control {
+/*input.form-control {
     border-radius: 12px;
     padding: 10px 15px;
     border: 1px solid #ccc;
-}
+}*/
 
 input.form-control:focus {
     box-shadow: none;
@@ -96,7 +96,7 @@ input.form-control:focus {
 
 /* Index Body */
 .hero-section {
-    width: 100vw;           
+/*    width: 100vw;           */
     height: 100vh;          
     background-color: #000;
     color: #fff;
