@@ -35,7 +35,7 @@ namespace tesla.Controllers
         [HttpGet]
         public IActionResult AddProduct()
         {
-           
+
 
             ViewBag.Categories = getCategories();
             return View();
@@ -64,17 +64,39 @@ namespace tesla.Controllers
                     model.prod_img = uniqueFileName; // Save filename in DB
                 }
 
-         
+
                 string query = $"INSERT INTO products (prod_name, prod_description, price, prod_img, cat_id) VALUES " +
                                $"('{model.prod_name}', '{model.prod_description}', {model.price}, '{model.prod_img}', {model.cat_id})";
                 _helper.execute(query);
 
-                return RedirectToAction("ProductList","Admin");
+                return RedirectToAction("ProductList", "Admin");
             }
 
-         
+
             ViewBag.Categories = getCategories();
             return View(model);
+        }
+        [HttpGet]
+        public IActionResult ShowProducts()
+        {
+            List<Product> products = new List<Product>();
+            DataTable dt = _helper.read("SELECT * FROM products");
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                products.Add(new Product
+                {
+                    id = Convert.ToInt32(dr["id"]),
+                    prod_name = dr["prod_name"].ToString(),
+                    prod_description = dr["prod_description"].ToString(),
+                    price = Convert.ToDecimal(dr["price"]),
+                    prod_img = dr["prod_img"].ToString(),
+                    cat_id = Convert.ToInt32(dr["cat_id"])
+                });
+            }
+            //Will do Cart Tomorrow
+            ViewBag.Categories = getCategories();
+            return View("~/Views/Home/home.cshtml", products); //VSCode navigation
         }
     }
 }
