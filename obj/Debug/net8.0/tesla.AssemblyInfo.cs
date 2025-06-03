@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tesla")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+908c60f7a8d3843aef1fdfe8be9254b9219a85c1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e1344f3b4a89ef459d56c9fd5fbf2c880285cf3")]
 [assembly: System.Reflection.AssemblyProductAttribute("tesla")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tesla")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
