@@ -35,12 +35,12 @@
                 <div class="nav-left d-flex align-items-center gap-4">
                     <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                     <a class="nav-link" asp-controller="Product" asp-action="ShowProducts">Products</a>
-                    <a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
+                    <a class="nav-link" asp-controller="Category" asp-action="ShowCategory">Categories</a>
                 </div>
 
                 <!-- Right Group -->
-                
                 <div class="nav-right d-flex align-items-center gap-1rem">
+                    <a class="nav-link" asp-controller="Cart" asp-action="ShowCart">Cart</a>
                     @if (string.IsNullOrWhiteSpace(Context.Session.GetString("role")))
                     {
                         <a class="nav-link" asp-controller="Auth" asp-action="Login">Log In</a>
@@ -51,7 +51,6 @@
                         <a class="nav-link">Hello  User</a>
                     }
                     <a class="nav-link" asp-controller="Profile" asp-action="Index" title="Profile"><img src="~/images/profile-icon.svg" alt="profile" class="profile-icon" style="width:24px; height:24px;" /></a>
-                    <a class="nav-link" asp-controller="Cart" asp-action="ShowCart"><img src="~/images/profile-icon.svg" alt="profile" class="profile-icon" style="width:24px; height:24px;" /></a>
 
         </div>
 

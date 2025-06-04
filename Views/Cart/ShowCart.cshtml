@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="~/css/cart.css" />
 
 
-<div class="container">
+<div class="container text-center mt-5">
     <div class="centered">
         <h2>Your Cart</h2>
     </div>
@@ -15,7 +15,13 @@
 
 @if (!Model.Any())
 {
+    <div class="container text-center mt-5">
+        <img src="~/images/empty-cart.png" alt="Empty Cart" class="img-fluid mb-3" style="max-width: 300px;" />
     <p>Your cart is empty.</p>
+    </div>
+    <div class="text-center">
+        <a class="btn btn-primary" asp-controller="Product" asp-action="ShowProducts">Continue Shopping</a>
+    </div>
 }
 else
 {

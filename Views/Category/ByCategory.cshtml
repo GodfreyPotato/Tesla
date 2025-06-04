@@ -1,0 +1,32 @@
+@model List<tesla.Models.Product>
+
+@{
+    ViewBag.Title = "Products in Category";
+}
+
+<h2>Products in Category @ViewBag.CategoryId</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No products found in this category.</div>
+}
+else
+{
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    @if (!string.IsNullOrEmpty(product.prod_img))
+                    {
+                        <img src="@product.prod_img" class="card-img-top" alt="@product.prod_name" style="max-height:200px;object-fit:contain;">
+                    }
+                    <div class="card-body">
+                        <h5 class="card-title">@product.prod_name</h5>
+                        <p class="card-text">Price: @product.price.ToString("C")</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
