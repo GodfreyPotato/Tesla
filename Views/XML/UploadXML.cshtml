@@ -1,0 +1,18 @@
+﻿@model tesla.Models.XML;
+@{
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert @(ViewBag.Message.Contains("Invalid") ? "alert-danger" : "alert-success") mt-3">
+            @ViewBag.Message
+        </div>
+    }
+    <form method="post" enctype="multipart/form-data" asp-action="UploadXML">
+        <div class="form-group">
+            <label>Select XML File:</label>
+            <input type="file" name="file" class="form-control" />
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Upload and Validate</button>
+    </form>
+
+}

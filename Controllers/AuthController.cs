@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MySqlX.XDevAPI.Common;
 using practiceQuiz.DataAccess;
 using System.Data;
 using tesla.Models;

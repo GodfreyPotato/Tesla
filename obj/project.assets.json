@@ -6064,23 +6064,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gabrielle\\.nuget\\packages\\": {},
+    "C:\\Users\\Godfrey Javier\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\VsCode\\Web\\Tesla\\tesla.csproj",
+      "projectUniqueName": "C:\\Users\\Godfrey Javier\\Downloads\\IPT endterm\\Tesla-main\\tesla.csproj",
       "projectName": "tesla",
-      "projectPath": "G:\\VsCode\\Web\\Tesla\\tesla.csproj",
-      "packagesPath": "C:\\Users\\Gabrielle\\.nuget\\packages\\",
-      "outputPath": "G:\\VsCode\\Web\\Tesla\\obj\\",
+      "projectPath": "C:\\Users\\Godfrey Javier\\Downloads\\IPT endterm\\Tesla-main\\tesla.csproj",
+      "packagesPath": "C:\\Users\\Godfrey Javier\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Godfrey Javier\\Downloads\\IPT endterm\\Tesla-main\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Gabrielle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Godfrey Javier\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6141,7 +6141,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
