@@ -48,7 +48,7 @@
                     }
                     else
                     {
-                        <a class="nav-link">Hello  User</a>
+                        <a class="nav-link">Hello  @Context.Session.GetString("firstname")</a>
                     }
                     <a class="nav-link" asp-controller="Profile" asp-action="Index" title="Profile"><img src="~/images/profile-icon.svg" alt="profile" class="profile-icon" style="width:24px; height:24px;" /></a>
                     <a class="nav-link" asp-controller="Cart" asp-action="ShowCart"><img src="~/images/profile-icon.svg" alt="profile" class="profile-icon" style="width:24px; height:24px;" /></a>

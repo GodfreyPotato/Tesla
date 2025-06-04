@@ -32,6 +32,9 @@ namespace tesla.Controllers
                     if (dt.Rows[0]["password"].ToString() == login.password)
                     {
                         HttpContext.Session.SetString("role",dt.Rows[0]["role"].ToString());
+                        HttpContext.Session.SetString("id", dt.Rows[0]["id"].ToString());
+
+                        HttpContext.Session.SetString("firstname", dt.Rows[0]["firstname"].ToString());
                         return RedirectToAction("ShowProducts", "Product");
                     }
                     else
