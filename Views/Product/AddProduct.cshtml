@@ -5,58 +5,70 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>AddProduct</h1>
+    <div class="container d-flex flex-column align-items-center justify-content-center add-product-page" style="min-height: 100vh;">
+        <h1>Add Product</h1>
+
+        <hr />
+            <div class="col-md-4 mx-auto">
+
+                <form asp-action="AddProduct" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="prod_name" class="control-label">Product Name</label>
+                        <input asp-for="prod_name" class="form-control" />
+                        <span asp-validation-for="prod_name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="prod_description" class="control-label">Description</label>
+                        <input asp-for="prod_description" class="form-control" />
+                        <span asp-validation-for="prod_description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="price" class="control-label">Price</label>
+                        <input asp-for="price" class="form-control" />
+                        <span asp-validation-for="price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="prod_img" class="control-label">Image</label>
+                        <input type="file" asp-for="ImageFile" class="form-control" />
+                        <span asp-validation-for="prod_img" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="cat_id" class="control-label">Category</label>
+                        <select name="cat_id" class="form-control">
+                            @foreach (var cat in ViewBag.Categories)
+                            {
+                                <option value="@cat.id">@cat.cat_name</option>
+                            }
+                        </select>
+                        <span asp-validation-for="cat_id" class="text-danger"></span>
+                    </div>
+            <div class="form-group d-flex gap-3 mt-3">
+                <input type="submit" value="Create" class="btn btn-primary w-50" />
+                <button type="button"
+                        onclick="location.href='@Url.Action("ProductList", "Admin")'"
+                        class="btn cancel-button w-50 rounded-0">
+                    Cancel
+                </button>
+            </div>
 
 
-<a asp-action="UploadXML" asp-controller="XML">Import Product XML</a>
 
-<hr />
-<div class="d-flex justify-content-center align-items-center">
-    <div class="card shadow rounded p-3">
-        <form asp-action="AddProduct" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                </form>
 
-            <div class="form-group">
-                <label asp-for="prod_name" class="control-label">Product Name</label>
-                <input asp-for="prod_name" class="form-control" />
-                <span asp-validation-for="prod_name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="prod_description" class="control-label"></label>
-                <input asp-for="prod_description" class="form-control" />
-                <span asp-validation-for="prod_description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="price" class="control-label"></label>
-                <input asp-for="price" class="form-control" />
-                <span asp-validation-for="price" class="text-danger"></span>
-            </div>
-         
-            <div class="form-group">
-                <label asp-for="prod_img" class="control-label"></label>
-                <input type="file" asp-for="ImageFile" class="form-control" />
-                <span asp-validation-for="prod_img" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="cat_id" class="control-label">Category</label>
-                <select name="cat_id" class="form-control" asp-for="cat_id">
-                    @foreach (var cat in ViewBag.Categories)
-                    {
-                        <option value="@cat.id">@cat.cat_name</option>
-                    }
-                </select>
-                <span asp-validation-for="cat_id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+
+    <div class="mt-4 text-center">
+        <p>Or import with XML</p>
+        <form asp-action="UploadXML" asp-controller="XML" method="get" class="d-inline">
+            <button type="submit" class="outline-button">Import Product XML</button>
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+
+    </div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
