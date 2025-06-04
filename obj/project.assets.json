@@ -6064,23 +6064,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Paduro Pa Duro\\.nuget\\packages\\": {},
+    "C:\\Users\\Jeff Danglapen\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\ASP.NET\\Tesla_2\\Tesla\\tesla.csproj",
+      "projectUniqueName": "C:\\Users\\Jeff Danglapen\\source\\repos\\tesla\\tesla.csproj",
       "projectName": "tesla",
-      "projectPath": "C:\\Dev\\ASP.NET\\Tesla_2\\Tesla\\tesla.csproj",
-      "packagesPath": "C:\\Users\\Paduro Pa Duro\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\ASP.NET\\Tesla_2\\Tesla\\obj\\",
+      "projectPath": "C:\\Users\\Jeff Danglapen\\source\\repos\\tesla\\tesla.csproj",
+      "packagesPath": "C:\\Users\\Jeff Danglapen\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jeff Danglapen\\source\\repos\\tesla\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Paduro Pa Duro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jeff Danglapen\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6108,7 +6108,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -6142,7 +6142,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -7,6 +7,28 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+<<<<<<< HEAD
+.custom-navbar {
+    background-color: transparent;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-navbar.scrolled {
+    background-color: black;
+}
+
+.navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+=======
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 a {
   color: #0077cc;
 }
@@ -39,6 +61,10 @@ button.accept-policy {
   line-height: inherit;
 }
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 .footer {
   position: absolute;
   bottom: 0;

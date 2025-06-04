@@ -1,6 +1,10 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = " Electric Cars, Solar & Clean Energy";
 }
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" />
+}
+
 
 <!-- Hero Section with Background -->
 <section class="hero-section position-relative text-white">
@@ -8,6 +12,9 @@
         <source src="~/contents/teslavid.mp4" type="video/mp4" />
         Your browser does not support the video tag.
     </video>
+
+    <div class="video-overlay"></div>
+
     <div class="hero-content position-absolute top-50 start-50 translate-middle text-center">
         <h1 class="display-3 fw-bold mb-3">Experience the Future</h1>
         <p class="lead mb-4">Electric driving redefined. Discover innovation with Tesla.</p>
@@ -15,8 +22,125 @@
     </div>
 </section>
 
-<section class="second-section">
-    <div class="container text-center py-5">
-        <h2>Coming Soon</h2>
+<section class="text-center py-5">
+    <h2>Shop Tesla Vehicles</h2>
+
+    <div class="row justify-content-center mt-4">
+        <!-- Card 1 -->
+        <div class="col-md-5 mb-4">
+            <div class="vehicle-card p-4 bg-light rounded">
+                <div class="row align-items-center">
+                    <!-- Text -->
+                    <div class="col-7 text-start">
+                        <h3>Model 3</h3>
+                        <p>Affordable electric sedan with top-notch features.</p>
+                        <p><b>From $37,490</b></p>
+                        <button class="order-btn">Order now</button>
+                        <button class="learn-more-btn">Learn more</button>
+                    </div>
+                    <!-- Image -->
+                    <div class="col-5 text-end">
+                        <img src="~/images/sample-product-pic.png" alt="Model 3" class="img-fluid rounded" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-5 mb-4">
+            <div class="vehicle-card p-4 bg-light rounded">
+                <div class="row align-items-center">
+                    <!-- Text -->
+                    <div class="col-7 text-start">
+                        <h3>Model Y</h3>
+                        <p>Affordable electric sedan with top-notch features.</p>
+                        <p><b>From $37,490</b></p>
+                        <button class="order-btn">Order now</button>
+                        <button class="learn-more-btn">Learn more</button>
+                    </div>
+                    <!-- Image -->
+                    <div class="col-5 text-end">
+                        <img src="~/images/sample-product-pic.png" alt="Model 3" class="img-fluid rounded" />
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <button class="more-products-btn">
+        More products <img src="~/images/arrow-right.svg" alt="arrow" class="arrow-icon" />
+    </button>
+
+</section>
+
+<section class="text-center py-5">
+    <div class="container px-4">
+        <!-- Image -->
+        <img src="~/images/charging-map.jpg" alt="Charging Map" class="img-fluid rounded" />
+
+        <!-- Texts -->
+        <div class="row mt-4 align-items-center">
+            <!-- Left text -->
+            <div class="col-md-6 text-md-start text-center">
+                <h2 class="mb-0">Charging now<br>in the Philippines</h2>
+            </div>
+
+            <!-- Right text group -->
+            <div class="col-md-6 text-md-end text-center">
+                <h2 class="mb-1" style="color: red">9 Chargers</h2>
+                <h2>2 Superchargers</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="text-center py-5">
+    <h2>Shop Tesla Energy</h2>
+
+    <div class="row justify-content-center mt-4">
+        <!-- Card 1 -->
+        <div class="col-md-5 mb-4">
+            <div class="vehicle-card p-4 bg-light rounded">
+                <div class="row align-items-center">
+                    <!-- Text -->
+                    <div class="col-7 text-start">
+                        <h3>Solar Roof</h3>
+                        <p>Affordable electric sedan with top-notch features.</p>
+                        <p><b>From $37,490</b></p>
+                        <button class="order-btn">Order now</button>
+                        <button class="learn-more-btn">Learn more</button>
+                    </div>
+                    <!-- Image -->
+                    <div class="col-5 text-end">
+                        <img src="~/images/sample-product-pic.png" alt="Model 3" class="img-fluid rounded" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-5 mb-4">
+            <div class="vehicle-card p-4 bg-light rounded">
+                <div class="row align-items-center">
+                    <!-- Text -->
+                    <div class="col-7 text-start">
+                        <h3>Solar Power</h3>
+                        <p>Affordable electric sedan with top-notch features.</p>
+                        <p><b>From $37,490</b></p>
+                        <button class="order-btn">Order now</button>
+                        <button class="learn-more-btn">Learn more</button>
+                    </div>
+                    <!-- Image -->
+                    <div class="col-5 text-end">
+                        <img src="~/images/sample-product-pic.png" alt="Model 3" class="img-fluid rounded" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="more-products-btn">
+        More products <img src="~/images/arrow-right.svg" alt="arrow" class="arrow-icon" />
+    </button>
+
 </section>

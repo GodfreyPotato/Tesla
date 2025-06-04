@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fdfdfd;
     color: #000;
     margin: 0;
@@ -13,7 +13,13 @@ body {
     margin-bottom: 60px;
 }
 
-/* Headings and text */
+.custom-navbar,
+.custom-navbar .nav-link {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600; /* optional: medium-bold */
+    font-size: 16px;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -23,12 +29,10 @@ h1, h2, h3, h4, h5, h6 {
     color: #6c757d !important;
 }
 
-/* Section spacing */
 .page-section {
     padding: 100px 20px;
 }
 
-/* Buttons */
 .btn {
     border-radius: 30px;
     padding: 10px 24px;
@@ -46,7 +50,6 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #333;
 }
 
-/* Form controls */
 /*input.form-control {
     border-radius: 12px;
     padding: 10px 15px;
@@ -58,7 +61,6 @@ input.form-control:focus {
     border-color: #000;
 }
 
-/* Navbar */
 .navbar {
     background-color: red; 
     border-bottom: none; 
@@ -87,14 +89,11 @@ input.form-control:focus {
     object-fit: contain;
 }
 
-
-/* Logo */
 .navbar .mx-auto {
     font-size: 1.25rem;
     font-weight: bold;
 }
 
-/* Index Body */
 .hero-section {
 /*    width: 100vw;           */
     height: 100vh;          
@@ -136,8 +135,6 @@ input.form-control:focus {
     height: 100vh;
     background-color: #111;
 }
-
-
 
 @media (max-width: 768px) {
     .navbar .mx-auto {
