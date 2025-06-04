@@ -7,7 +7,8 @@
 
         <form asp-action="Login" method="post">
 
-            <h2> Sign In </h2>
+            <h2 class="text-center" style="font-size:16px;"> Sign In </h2>
+            <br />
 
             <div class="form-group mb-4">
                 <label asp-for="email">Email</label>
@@ -21,10 +22,15 @@
                 <span asp-validation-for="password" class="text-danger"></span>
             </div>
 
-            <input type="submit" value="Login" class="btn btn-primary mb-3" />
+            <input type="submit" value="Login" class="btn btn-primary mb-3 w-100 align-text-center rounded-10" />
 
         </form>
-        <a asp-action="Register"> Register an Account</a>
+        <br />
+
+
+        <p class="text-center" style="font-size:15px;"> Don't have an account?</p>
+
+        <a class="btn btn-secondary mb-3 w-100 text-center rounded-10" style="color:white;" asp-action="Register"> Register</a>
 
     </div>
 </div>
