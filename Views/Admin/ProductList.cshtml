@@ -1,76 +1,103 @@
 ﻿@model IEnumerable<tesla.Models.Product>
 
 @{
-    ViewData["Title"] = "Home";
+    ViewData["Title"] = "Admin Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="container py-5">
-    <div class="container" style="background-color: grey">
-        <h2>Reports</h2>
-    </div>
-
     <div class="container">
-        <h1>Inventory</h1>
 
-        <p>
-            <a asp-controller="Product" asp-action="AddProduct">Create New</a>
-        </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.id)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.prod_name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.prod_description)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.price)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.prod_img)
+        <div class="dashboard-section">
+            <div class="dashboard-card">
+                <h2 class="card-title">Top Products</h2>
+                <p class="card-subtitle">Your top-performing products in the last X days.</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Sales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            @* !! Add content in this part!! *@
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.cat_id)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.prod_name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.prod_description)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.price)
-                        </td>
-                        <td>
-                            <img src="@Url.Content("~/productImages/" + item.prod_img)" width="200" />
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.cat_id)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+            <div class="dashboard-card">
+                <h2 class="card-title">Latest sales</h2>
+                <p class="card-subtitle">Products that recently got a unit sold.</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Sales</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            @* !! Add content in this part!! *@
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="container">
+                <div class="inventory-actions">
+                    <h2>Inventory</h2>
+                    <a asp-controller="Product" asp-action="AddProduct">
+                        <button class="create-prod-btn">Create new product</button>
+                    </a>
+                </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.id)</th>
+                            <th>@Html.DisplayNameFor(model => model.prod_name)</th>
+                            <th>@Html.DisplayNameFor(model => model.prod_description)</th>
+                            <th>@Html.DisplayNameFor(model => model.price)</th>
+                            <th>@Html.DisplayNameFor(model => model.prod_img)</th>
+                            <th>@Html.DisplayNameFor(model => model.cat_id)</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.id)</td>
+                                <td>@Html.DisplayFor(modelItem => item.prod_name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.prod_description)</td>
+                                <td>@Html.DisplayFor(modelItem => item.price)</td>
+                                <td>
+                                    <img src="@Url.Content("~/productImages/" + item.prod_img)" width="200" />
+                                </td>
+                                <td>@Html.DisplayFor(modelItem => item.cat_id)</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>

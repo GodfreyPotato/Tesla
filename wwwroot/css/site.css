@@ -145,3 +145,114 @@ input.form-control:focus {
         width: 100%;
     }
 }
+
+/* PRODUCT LIST (ProductList.cshtml) */
+
+.create-prod-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 0.2rem;
+}
+
+.dashboard-section {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    flex: 1;
+    background-color: #F4F4F4;
+    padding: 50px;
+    border-radius: 13px;
+}
+
+.card-title {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.card-subtitle {
+    color: slategrey;
+    margin-bottom: 1.5rem;
+}
+
+.inventory-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.create-prod-btn {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+    .create-prod-btn:hover {
+        background-color: #0056b3;
+    }
+
+
+/* ADD PRODUCT (AddProduct.cshtml) */
+
+.add-product-page .form-group {
+    margin-bottom: .6rem;
+}
+
+    .add-product-page .form-group input[type="submit"] {
+/*        width: 100%;*/
+        background-color: #007bff;
+        border: none;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px !important;
+        cursor: pointer;
+    }
+
+        .add-product-page .form-group input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+.add-product-page .outline-button {
+    padding: 8px 16px;
+    color: #007bff;
+    border: 2px solid #007bff;
+    background-color: transparent;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+}
+
+    .add-product-page .outline-button:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
+.cancel-button {
+    background-color: transparent !important;
+    color: #007bff !important;
+    border: 2px solid #007bff !important;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 4px !important;
+}
+
+    .cancel-button:hover {
+        background-color: #007bff !important;
+        color: white !important;
+    }
