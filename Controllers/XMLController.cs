@@ -3,11 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using System.Xml.Schema;
 using System.Xml;
 using tesla.Models;
+using practiceQuiz.DataAccess;
+using System.Data;
 
 namespace tesla.Controllers
 {
     public class XMLController : Controller
-    {
+    { DatabaseHelper helper;
+        public XMLController()
+        {
+            helper = new DatabaseHelper();
+        }
         [HttpGet]
         public IActionResult UploadXML()
         {
@@ -31,9 +37,16 @@ namespace tesla.Controllers
                     isValid = false;
                     errorMessage = args.Message;
                 };
-                using (XmlReader reader = XmlReader.Create(stream, settings))
+                try
                 {
-                    while (reader.Read()) { }
+                    using (XmlReader reader = XmlReader.Create(stream, settings))
+                    {
+                        while (reader.Read()) { }
+                    }
+                }
+                catch(Exception e)
+                {
+                    return false;
                 }
             }
             validationMessage = errorMessage;
@@ -55,12 +68,47 @@ namespace tesla.Controllers
             if (isValid)
             {
                 ViewBag.Message = "XML file is valid.";
+                //add to database
+                string uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "XMLUploads");
+                if (!Directory.Exists(uploadFolder))
+                    Directory.CreateDirectory(uploadFolder);
+
+                string filePath = Path.Combine(uploadFolder, Path.GetFileName(file.FileName));
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+                try
+                {
+
+                    XMLToDb(filePath);
+
+                    return RedirectToAction("AddProduct", "Product");
+                }
+                catch(Exception e)
+                {
+
+                    return Content("Error");
+                }
+              
             }
             else
             {
-                ViewBag.Message = $"XML file is invalid. Error: {validationMessage}";
+                ViewBag.Message = $"Invalid XML file, Error: {validationMessage}";
             }
             return View();
+        }
+
+        private void XMLToDb(string xmlPath) {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xmlPath);
+            XmlNodeList products = doc.SelectNodes("/Products/Product");
+                foreach (XmlNode product in products)
+                {
+                    string query = $"insert into products(prod_name, prod_description,price) values ('{product["prod_name"].InnerText}','{product["prod_description"].InnerText}',{decimal.Parse(product["price"].InnerText)})";
+                    helper.execute(query);
+                }
+           
         }
     }
 }
