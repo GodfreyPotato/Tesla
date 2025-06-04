@@ -1,0 +1,36 @@
+@model List<tesla.Models.Category>
+
+<h2>Categories</h2>
+
+<style>
+    .category-card-link {
+        text-decoration: none;
+        color: inherit;
+    }
+    .category-card {
+        transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .category-card:hover {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        transform: translateY(-4px) scale(1.03);
+    }
+</style>
+
+<div class="row">
+    @foreach (var category in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <a href="@Url.Action("ByCategory", "Product", new { categoryId = category.id })" class="category-card-link">
+                <div class="card h-100 category-card">
+                    <div class="card-body">
+                        <h5 class="card-title">@category.cat_name</h5>
+                        <p class="card-text">@category.cat_description</p>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">ID: @category.id</small>
+                    </div>
+                </div>
+            </a>
+        </div>
+    }
+</div>
