@@ -1,7 +1,7 @@
 ﻿@model tesla.Models.Register
 
 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-<div class="d-flex justify-content-center align-items-center " style="height:100vh;">
+<div class="d-flex justify-content-center align-items-center pt-5" style="height: 100vh;">
     <div class="card p-5 rounded">
 
         <form asp-action="Register" method="post">
@@ -9,7 +9,7 @@
                 <label asp-for="firstname">Firstname</label>
                 <input asp-for="firstname" class="form-control" />
                 <span asp-validation-for="firstname" class="text-danger"></span>
-            </div>  
+            </div>
             <div class="form-group mb-4">
                 <label asp-for="middlename">Middlename</label>
                 <input asp-for="middlename" class="form-control" />
