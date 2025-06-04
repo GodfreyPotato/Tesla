@@ -7,6 +7,7 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+<<<<<<< HEAD
 .custom-navbar {
     background-color: transparent;
     padding-top: 3px;
@@ -26,6 +27,8 @@ a.navbar-brand {
 
 
 
+=======
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 a {
   color: #0077cc;
 }
@@ -58,7 +61,10 @@ button.accept-policy {
   line-height: inherit;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 .footer {
   position: absolute;
   bottom: 0;

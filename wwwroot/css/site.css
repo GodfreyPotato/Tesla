@@ -5,7 +5,11 @@ html {
 }
 
 body {
+<<<<<<< HEAD
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+=======
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
     background-color: #fdfdfd;
     color: #000;
     margin: 0;
@@ -13,6 +17,7 @@ body {
     margin-bottom: 60px;
 }
 
+<<<<<<< HEAD
 .custom-navbar,
 .custom-navbar .nav-link {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -20,6 +25,9 @@ body {
     font-size: 16px;
 }
 
+=======
+/* Headings and text */
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -29,10 +37,18 @@ h1, h2, h3, h4, h5, h6 {
     color: #6c757d !important;
 }
 
+<<<<<<< HEAD
+=======
+/* Section spacing */
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 .page-section {
     padding: 100px 20px;
 }
 
+<<<<<<< HEAD
+=======
+/* Buttons */
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 .btn {
     border-radius: 30px;
     padding: 10px 24px;
@@ -50,6 +66,10 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #333;
 }
 
+<<<<<<< HEAD
+=======
+/* Form controls */
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 /*input.form-control {
     border-radius: 12px;
     padding: 10px 15px;
@@ -61,6 +81,10 @@ input.form-control:focus {
     border-color: #000;
 }
 
+<<<<<<< HEAD
+=======
+/* Navbar */
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 .navbar {
     background-color: red; 
     border-bottom: none; 
@@ -89,11 +113,20 @@ input.form-control:focus {
     object-fit: contain;
 }
 
+<<<<<<< HEAD
+=======
+
+/* Logo */
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 .navbar .mx-auto {
     font-size: 1.25rem;
     font-weight: bold;
 }
 
+<<<<<<< HEAD
+=======
+/* Index Body */
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 .hero-section {
 /*    width: 100vw;           */
     height: 100vh;          
@@ -136,6 +169,11 @@ input.form-control:focus {
     background-color: #111;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 788c965d6bb2858087ff2db53d101e3f36666bd3
 @media (max-width: 768px) {
     .navbar .mx-auto {
         display: none;
