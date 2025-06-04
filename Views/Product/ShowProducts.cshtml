@@ -1,60 +1,40 @@
 ﻿@model IEnumerable<tesla.Models.Product>
-
 @{
-    ViewData["Title"] = "ShowProducts";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Shop";
 }
 
-<h1>ShowProducts</h1>
+<div class="container">
+    <div class="centered">
+        <h2>Products Menu</h2>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-          
-            <th>
-                @Html.DisplayNameFor(model => model.prod_name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.prod_description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.prod_img)
-            </th>
-            
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.prod_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.prod_description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.prod_img)
-            </td>
-        
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+@Html.ValidationSummary()
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="d-flex justify-content-center align-items-center" style="height:220px; background-color:#f8f9fa;">
+                    <img src="@Url.Content("~/productImages/" + product.prod_img)" class="card-img-top" alt="@product.prod_name" style="max-height:200px; max-width:100%; object-fit:contain;">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@product.prod_name</h5>
+                    <p class="card-text">@product.prod_description</p>
+                    <p class="card-text"><strong>@product.price.ToString("C")</strong></p>
+                    <form asp-action="AddToCart" asp-controller="Cart" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="product_id" value="@product.id" />
+                       
+                        @* <div class="mb-2"> *@
+                        @*     <label for="quantity-@product.id" class="form-label">Quantity:</label> *@
+                        @*     <input type="number" id="quantity-@product.id" name="quantity" value="1" min="1" class="form-control" style="width: 90px; display: inline-block;" /> *@
+                        @* </div> *@
+                        <input type="hidden" name="cart_id" value="1" /> <!-- Set to a real cart id if available -->
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

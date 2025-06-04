@@ -52,10 +52,6 @@ namespace tesla.Controllers
                     var extension = Path.GetExtension(model.ImageFile.FileName);
                     var uniqueFileName = $"{fileName}_{Guid.NewGuid()}{extension}";
                     var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productImages", uniqueFileName);
-
-                    //Try natin implement yung anywhere makakupload ng image kung may time pa
-                    //Baka lang magtaka si Sir di tayo add image from any path
-                    //Di kasi nagpapakita kung di galing productImages
                     using (var stream = new FileStream(imagePath, FileMode.Create))
                     {
                         await model.ImageFile.CopyToAsync(stream);
@@ -65,8 +61,8 @@ namespace tesla.Controllers
                 }
 
 
-                string query = $"INSERT INTO products (prod_name, prod_description, price, prod_img, cat_id) VALUES " +
-                               $"('{model.prod_name}', '{model.prod_description}', {model.price}, '{model.prod_img}', {model.cat_id})";
+                string query = @$"INSERT INTO products (prod_name, prod_description, price, prod_img, cat_id) 
+                                VALUES ('{model.prod_name}', '{model.prod_description}', {model.price}, '{model.prod_img}', {model.cat_id})";
                 _helper.execute(query);
 
                 return RedirectToAction("ProductList", "Admin");
@@ -97,7 +93,7 @@ namespace tesla.Controllers
             }
             //Will do Cart Tomorrow
             ViewBag.Categories = getCategories();
-            return View("~/Views/Home/home.cshtml", products); //VSCode navigation
+            return View(products);
         }
     }
 }

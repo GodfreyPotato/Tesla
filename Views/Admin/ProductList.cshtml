@@ -186,7 +186,11 @@
 
                                         @Html.ActionLink("Details", "Details", new { id = item.id }) |
 
-                                        <form action="deleteProduct" method="post"> <input type="hidden" name="id" value="@item.id" /> <input class="btn btn-primary btn-sm" type="submit" name="name" value="Delete" /> </form>
+                                        <form action="deleteProduct" method="post" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                            <input type="hidden" name="id" value="@item.id" />
+                                            <button class="btn btn-primary btn-sm" type="submit">Delete</button>
+                                        </form>
+
 
                                     </div>
                                 </td>
