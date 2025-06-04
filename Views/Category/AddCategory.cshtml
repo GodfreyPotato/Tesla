@@ -1,0 +1,18 @@
+﻿@model tesla.Models.Category;
+
+<div class="d-flex justify-content-center align-items-center ">
+	<form action="AddCategory" class="card p-4 shadow rounded" method="post">
+		<div class="form-group">
+			<label class="form-label" asp-for="cat_name">Category Name</label>
+			<input class="form-control" type="type" asp-for="cat_name" value="" />
+			<span asp-validation-for="cat_name" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label class="form-label" asp-for="cat_description">Category Description</label>
+			<input class="form-control" type="type" asp-for="cat_description" value="" />
+			<span asp-validation-for="cat_description" class="text-danger"></span>
+		</div>
+
+		<input type="submit" class="btn btn-primary"  value="Add Category" />
+	</form>
+</div>

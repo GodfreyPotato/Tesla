@@ -62,7 +62,7 @@ input.form-control:focus {
 }
 
 .navbar {
-    background-color: red; 
+    background-color: black; 
     border-bottom: none; 
     padding: 0.75rem 1.5rem;
 }
@@ -95,7 +95,6 @@ input.form-control:focus {
 }
 
 .hero-section {
-/*    width: 100vw;           */
     height: 100vh;          
     background-color: #000;
     color: #fff;
