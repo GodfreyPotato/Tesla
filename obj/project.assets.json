@@ -6064,23 +6064,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gabrielle\\.nuget\\packages\\": {},
+    "C:\\Users\\Paduro Pa Duro\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\VsCode\\Web\\Tesla\\tesla.csproj",
+      "projectUniqueName": "C:\\Dev\\ASP.NET\\Tesla_2\\Tesla\\tesla.csproj",
       "projectName": "tesla",
-      "projectPath": "G:\\VsCode\\Web\\Tesla\\tesla.csproj",
-      "packagesPath": "C:\\Users\\Gabrielle\\.nuget\\packages\\",
-      "outputPath": "G:\\VsCode\\Web\\Tesla\\obj\\",
+      "projectPath": "C:\\Dev\\ASP.NET\\Tesla_2\\Tesla\\tesla.csproj",
+      "packagesPath": "C:\\Users\\Paduro Pa Duro\\.nuget\\packages\\",
+      "outputPath": "C:\\Dev\\ASP.NET\\Tesla_2\\Tesla\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Gabrielle\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Paduro Pa Duro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6089,6 +6089,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Users\\Paduro Pa Duro\\.nuget\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6107,7 +6108,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "9.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -6141,7 +6142,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
