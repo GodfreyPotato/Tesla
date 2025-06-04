@@ -158,15 +158,13 @@ namespace tesla.Controllers
                     var uniqueFileName = $"{fileName}_{Guid.NewGuid()}{extension}";
                     var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productImages", uniqueFileName);
 
-                    //Try natin implement yung anywhere makakupload ng image kung may time pa
-                    //Baka lang magtaka si Sir di tayo add image from any path
-                    //Di kasi nagpapakita kung di galing productImages
+                    
                     using (var stream = new FileStream(imagePath, FileMode.Create))
                     {
                         await model.ImageFile.CopyToAsync(stream);
                     }
 
-                    model.prod_img = uniqueFileName; // Save filename in DB
+                    model.prod_img = uniqueFileName;
 
 
                     
