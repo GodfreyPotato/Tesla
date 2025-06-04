@@ -22,7 +22,7 @@ namespace Tesla.Controllers
             if (string.IsNullOrWhiteSpace(HttpContext.Session.GetString("role")))
             {
                 DataTable dt = _helper.read("select * from cart where user_id IS null");
-
+                HttpContext.Session.SetString("notLogged", "true");
                 if (dt.Rows.Count == 0)
                 {
                     _helper.execute("insert into cart (user_id) values (null)");
@@ -109,9 +109,27 @@ namespace Tesla.Controllers
         [HttpPost]
         public IActionResult UpdateQuantity(int quantity, int id)
         {
-            _helper.execute($"update cartItems set quantity = {quantity} where id = {id}");
+
+                _helper.execute($"update cartItems set quantity = {quantity} where id = {id}");
             return RedirectToAction("ShowCart");
         }
 
+        [HttpGet]
+        public IActionResult Checkout()
+        {
+            if (HttpContext.Session.GetString("role") == "customer")
+            {
+                //gab pa connect don sa ginawa mong order
+                return RedirectToAction("");
+            }
+            else if(string.IsNullOrWhiteSpace(HttpContext.Session.GetString("role")))
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+            else
+            {
+                return Unauthorized();
+            }
+        }
     }
 }

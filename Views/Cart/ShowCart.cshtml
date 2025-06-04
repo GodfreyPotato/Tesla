@@ -7,13 +7,16 @@
 <link rel="stylesheet" href="~/css/cart.css" />
 
 
-<div class="container text-center mt-5">
-    <div class="centered">
-        <h2>Your Cart</h2>
+<div class=" text-center mt-5">
+    <div class="w-100 d-flex justify-content-around">
+        <h2>Your Cart</h2> <a asp-controller="Cart" asp-action="Checkout" class="btn btn-success">Checkout</a>
+
     </div>
 </div>
 
-
+@* kung ano update sa if, paki apply din sa else *@
+@* kung ano update sa if, paki apply din sa else *@
+@* kung ano update sa if, paki apply din sa else *@
 @if (!string.IsNullOrWhiteSpace(Context.Session.GetString("role")))
 {
     <div class="row">
@@ -48,7 +51,7 @@
         }
     </div>
 
-    </div>
+   
     <div class="text-center">
         <a class="btn btn-primary" asp-controller="Product" asp-action="ShowProducts">Continue Shopping</a>
     </div>
