@@ -113,7 +113,7 @@ namespace tesla.Controllers
                 if(cat_id != null)
                 {
                     string query = $"insert into products(prod_name, prod_description,price, prod_img, cat_id) values ('{prodName}','{prodDesc}',{price},'{img}', {cat_id})";
-                    helper.execute(query);
+                    helper.execute(query); 
                 }
                 else
                 {
