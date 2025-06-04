@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MySqlX.XDevAPI.Common;
 using practiceQuiz.DataAccess;
+using Renci.SshNet;
 using System.Data;
 using tesla.Models;
 
@@ -31,6 +31,7 @@ namespace tesla.Controllers
                 {
                     if (dt.Rows[0]["password"].ToString() == login.password)
                     {
+                        HttpContext.Session.SetString("role",dt.Rows[0]["role"].ToString());
                         return RedirectToAction("ShowProducts", "Product");
                     }
                     else

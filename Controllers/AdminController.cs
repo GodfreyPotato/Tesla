@@ -9,12 +9,17 @@ namespace tesla.Controllers
     public class AdminController : Controller
     {
         DatabaseHelper _helper;
+     
         public AdminController()
         {
             _helper = new DatabaseHelper();
         }
         public IActionResult ProductList()
         {
+            if(HttpContext.Session.GetString("role") != "admin")
+            {
+                return RedirectToAction("Login", "Auth");
+            }
             ViewBag.img = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productImages");
             return View(getProducts());
         }
