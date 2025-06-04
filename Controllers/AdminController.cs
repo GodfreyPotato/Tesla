@@ -2,6 +2,7 @@
 using practiceQuiz.DataAccess;
 using System.Data;
 using System.Globalization;
+using System.Threading.Tasks;
 using tesla.Models;
 
 namespace tesla.Controllers
@@ -14,12 +15,31 @@ namespace tesla.Controllers
         {
             _helper = new DatabaseHelper();
         }
+        private List<Category> getCategories()
+        {
+            List<Category> categories = new List<Category>();
+
+            DataTable dt = _helper.read("Select * from categories;");
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                categories.Add(new Category
+                {
+                    id = int.Parse(dr["id"].ToString()),
+                    cat_name = dr["cat_name"].ToString(),
+                    cat_description = dr["cat_description"].ToString()
+                });
+            }
+
+            return categories;
+        }
         public IActionResult ProductList()
         {
-            if(HttpContext.Session.GetString("role") != "admin")
+ /*          if(HttpContext.Session.GetString("role") != "admin")
             {
                 return RedirectToAction("Login", "Auth");
-            }
+            }*/
+            ViewBag.Categories = getCategories();
             ViewBag.img = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productImages");
             return View(getProducts());
         }
@@ -28,7 +48,7 @@ namespace tesla.Controllers
         {
             List<Product> products = new List<Product>();
 
-            DataTable dt = _helper.read("Select * from products;");
+            DataTable dt = _helper.read("Select * from products join categories on products.cat_id = categories.id;");
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -119,6 +139,50 @@ namespace tesla.Controllers
                 });
             }
             return orderDetail;
+        }
+
+        public IActionResult deleteProduct(int id) {
+            _helper.execute($"delete from products where id = {id}");
+
+            return RedirectToAction("ProductList");
+        }
+
+        public async Task<IActionResult> EditProduct(Product model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.ImageFile != null && model.ImageFile.Length > 0)
+                {
+                    var fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+                    var extension = Path.GetExtension(model.ImageFile.FileName);
+                    var uniqueFileName = $"{fileName}_{Guid.NewGuid()}{extension}";
+                    var imagePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productImages", uniqueFileName);
+
+                    
+                    using (var stream = new FileStream(imagePath, FileMode.Create))
+                    {
+                        await model.ImageFile.CopyToAsync(stream);
+                    }
+
+                    model.prod_img = uniqueFileName;
+
+
+                    
+                    _helper.execute($"update products set prod_name = '{model.prod_name}', prod_description = '{model.prod_description}', price = {model.price}, prod_img = '{model.prod_img}', cat_id = {model.cat_id} where id = {model.id}");
+
+                    return RedirectToAction("ProductList", "Admin");
+                }
+
+               
+                string query = @$"update products set prod_name = '{model.prod_name}', prod_description = '{model.prod_description}', price = {model.price}, cat_id = {model.cat_id} where id = {model.id}";
+                _helper.execute(query);
+
+                return RedirectToAction("ProductList", "Admin");
+            }
+
+
+            ViewBag.Categories = getCategories();
+            return View(model);
         }
     }
 }

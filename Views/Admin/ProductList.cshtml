@@ -5,6 +5,63 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form asp-action="EditProduct" method="post" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" name="id" id="prod_id" value="" />
+                    <div class="form-group">
+                        <label  class="control-label">Product Name</label>
+                        <input name="prod_name" id="prod_name" class="form-control" />
+                        <span  class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label">Description</label>
+                        <input name="prod_description" id="prod_description" class="form-control" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Price</label>
+                        <input name="price" id="price" class="form-control" />
+                        <span  class="text-danger"></span>
+                    </div>
+                    <div>
+                        <img id="imgPreview" width="200" alt="No IMG" />
+                    </div>
+                    <div class="form-group">
+                        <label  class="control-label">Image</label>
+                        <input type="file" name="ImageFile" id="imgInput" class="form-control" />
+                        <span  class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Category</label>
+                        <select name="cat_id" class="form-control">
+                            @foreach (var cat in ViewBag.Categories)
+                            {
+                                <option value="@cat.id">@cat.cat_name</option>
+                            }
+                        </select>
+                        <span  class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex align-items-center justify-content-center">
+                        <input type="submit" value="Update" class="btn btn-primary w-100 mt-4" />
+                        
+                    </div>
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+
 <div class="container py-5">
     <div class="container">
 
@@ -58,20 +115,25 @@
             <div class="container">
                 <div class="inventory-actions">
                     <h2>Inventory</h2>
-                    <a asp-controller="Product" asp-action="AddProduct">
-                        <button class="create-prod-btn">Create new product</button>
-                    </a>
+                    <div>
+                        <a asp-controller="Category" asp-action="AddCategory">
+                            <button class="create-prod-btn">New category</button>
+                        </a>
+                        <a asp-controller="Product" asp-action="AddProduct">
+                            <button class="create-prod-btn">New product</button>
+                        </a>
+                    </div>
                 </div>
 
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.id)</th>
-                            <th>@Html.DisplayNameFor(model => model.prod_name)</th>
-                            <th>@Html.DisplayNameFor(model => model.prod_description)</th>
-                            <th>@Html.DisplayNameFor(model => model.price)</th>
-                            <th>@Html.DisplayNameFor(model => model.prod_img)</th>
-                            <th>@Html.DisplayNameFor(model => model.cat_id)</th>
+                           
+                            <th>Product Name</th>
+                            <th>Product Description</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Category Id</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -79,7 +141,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.id)</td>
+                             
                                 <td>@Html.DisplayFor(modelItem => item.prod_name)</td>
                                 <td>@Html.DisplayFor(modelItem => item.prod_description)</td>
                                 <td>@Html.DisplayFor(modelItem => item.price)</td>
@@ -105,9 +167,28 @@
                                     }
                                 </td>
                                 <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <button type="button"
+                                                class="btn btn-primary editBtn"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal"
+                                                data-id="@item.id"
+                                                data-name="@item.prod_name"
+                                                data-description="@item.prod_description"
+                                                data-price="@item.price"
+                                                data-img="@item.prod_img"
+                                                data-category="@item.cat_id">
+                                            Edit
+                                        </button>
+
+                                        
+
+                                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+
+                                        <form action="deleteProduct" method="post"> <input type="hidden" name="id" value="@item.id" /> <input class="btn btn-primary btn-sm" type="submit" name="name" value="Delete" /> </form>
+
+                                    </div>
                                 </td>
                             </tr>
                         }
@@ -116,6 +197,32 @@
             </div>
         </div>
 
-
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.editBtn').on('click', function () {
+            
+            var id = $(this).data('id');
+            var name = $(this).data('name');
+            var description = $(this).data('description');
+            var price = $(this).data('price');
+            var category = $(this).data('category');
+            var img = $(this).data('img')
+            $('#prod_id').val(id);
+            $('#prod_name').val(name);
+            $('#prod_description').val(description);
+            $('#price').val(price);   
+            if (img) {
+                $('#imgPreview').attr('src', "/productImages/" + img);
+                $('#imgInput').attr('src', "/productImages/" + img);
+            } else {
+                $('#imgPreview').attr('src', '');
+            }
+            $('#cat_id').val(category);
+        });
+    });
+</script>
+
+
