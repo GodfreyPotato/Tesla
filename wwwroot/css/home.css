@@ -1,0 +1,142 @@
+.custom-navbar {
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 60px; /* adjust as needed */
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.hero-section {
+    border: none;
+}
+
+.hero-video {
+    border: 2px solid blue;
+    background-color: black; /* in case video isn't loading */
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+}
+
+
+.second-section {
+    padding-top: 80px;
+    background-color: white;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0; 
+}
+
+.vehicle-card {
+    background-color: #F4F4F4 !important;
+    color: #fff;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    text-align: left;
+}
+
+.vehicle-card h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: black;
+}
+
+    .vehicle-card p {
+        color: #5C5E62;
+    }
+
+.vehicle-card:hover {
+    transform: translateY(-5px);
+}
+.second-section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.order-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-right: 0.2rem;
+}
+
+.learn-more-btn {
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.more-products-btn {
+    position: relative;
+    background: none;
+    border: none;
+    color: lightslategrey;
+    padding: 10px 24px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    overflow: hidden;
+    gap: 20px;
+}
+
+    .more-products-btn::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 0%;
+        background-color: #007bff;
+        transition: width 0.3s ease;
+    }
+
+    .more-products-btn:hover::after {
+        width: 100%;
+    }
+
+    .more-products-btn .arrow {
+        margin-left: 8px;
+        font-weight: 700;
+        transition: transform 0.3s;
+    }
+
+    .more-products-btn:hover .arrow {
+        transform: translateX(4px);
+    }
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s;
+}
+
+h2 {
+    margin-bottom: 2.5rem;
+    font-weight: 800;
+}

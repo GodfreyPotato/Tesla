@@ -1,0 +1,43 @@
+﻿@model tesla.Models.Register
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="d-flex justify-content-center align-items-center " style="height:100vh;">
+    <div class="card p-5 rounded">
+
+        <form asp-action="Register" method="post">
+            <div class="form-group mb-4">
+                <label asp-for="firstname">Firstname</label>
+                <input asp-for="firstname" class="form-control" />
+                <span asp-validation-for="firstname" class="text-danger"></span>
+            </div>  
+            <div class="form-group mb-4">
+                <label asp-for="middlename">Middlename</label>
+                <input asp-for="middlename" class="form-control" />
+                <span asp-validation-for="middlename" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="lastname">Lastname</label>
+                <input asp-for="lastname" class="form-control" />
+                <span asp-validation-for="lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="address">Address</label>
+                <input asp-for="address" class="form-control" />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-4">
+                <label asp-for="email">Email</label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-4">
+                <label asp-for="password">Password</label>
+                <input asp-for="password" class="form-control" type="password" />
+                <span asp-validation-for="password" class="text-danger">Password</span>
+            </div>
+            <input type="submit" value="Register" class="btn btn-primary mb-3" />
+        </form>
+        <a asp-action="Login">Login</a>
+    </div>
+</div>

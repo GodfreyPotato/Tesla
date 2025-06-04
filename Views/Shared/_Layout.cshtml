@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tesla - @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/tesla.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+    @RenderSection("Styles", required: false)
+
+</head>
+<body>
+
+    <!-- Nav Bar -->
+<header>
+<nav class="navbar custom-navbar">
+            <div class="container d-flex align-items-center justify-content-between">
+
+
+        <!-- Left logo -->
+        <a class="navbar-brand mx-3" asp-controller="Home" asp-action="Index">
+        <img src="~/images/tesla-logo.png" alt="Tesla Logo" class="logo-img" />
+        </a>
+
+        <!-- Center Group: Navigation Links -->
+        <div class="nav-left d-flex align-items-center gap-4">
+            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+            <a class="nav-link" asp-controller="Product" asp-action="ShowProducts">Products</a>
+            <a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
+        </div>
+
+        <!-- Right Group -->
+        <div class="nav-right d-flex align-items-center gap-1">
+            <a class="nav-link" asp-controller="Auth" asp-action="Login">Log In</a>
+         @* <a class="nav-link" asp-controller="Auth" asp-action="Register">Register</a> *@
+            <a class="nav-link" asp-controller="Profile" asp-action="Index" title="Profile">
+                <img src="~/images/profile-icon.svg" alt="profile" class="profile-icon" style="width:24px; height:24px;" />
+            </a>
+        </div>
+
+    </div>
+</nav>
+</header>
+
+     <main role="main">
+            @RenderBody()
+     </main>
+
+
+    <script>
+        window.addEventListener('scroll', function () {
+            var navbar = document.querySelector('.custom-navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+
+</body>
+<!-- Footer -->
+@* <footer class="border-top footer text-muted"> *@
+@*     <div class="container"> *@
+@*         &copy; 2025 - tesla - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> *@
+@*     </div> *@
+@* </footer> *@
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+
+
+
+</html>

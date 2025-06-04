@@ -1,0 +1,36 @@
+﻿@model tesla.Models.OrderDetail
+
+@{
+    ViewData["Title"] = "OrderDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>OrderDetails</h1>
+
+
+<h3>Order #@Model.id – @Model.date</h3>
+<p>Total: @Model.totalAmount.ToString("C")</p>
+
+<table class="table table-bordered table-striped mt-4">
+    <thead class="thead-dark">
+        <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.items)
+        {
+            <tr>
+                <td>@item.productName</td>
+                <td>@item.quantity</td>
+                <td>@item.price.ToString("C")</td>
+                <td>@item.subtotal.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("OrderList", "Admin")" class="btn btn-secondary mt-3">Back</a>

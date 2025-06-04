@@ -1,0 +1,78 @@
+﻿@model IEnumerable<tesla.Models.Order>
+
+@{
+    ViewData["Title"] = "OrderList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <h1>Order List</h1>
+    <form method="GET" asp-action="OrderList" asp-controller="Admin">
+        <label for="status">Filter:</label>
+        <select id="status" name="status" class="form-control" onchange="this.form.submit()">
+            <option value="">All</option>
+            <option value="preparing" >Preparing</option>
+            <option value="readytopickup">Ready To Pick Up</option>
+            <option value="received">Received</option>
+        </select>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Cart ID
+            </th>
+            <th>
+                User ID
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Total Amount
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cart_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.user_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                $@Html.DisplayFor(modelItem => item.totalAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                    @Html.ActionLink("Details", "OrderDetails", new { id = item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

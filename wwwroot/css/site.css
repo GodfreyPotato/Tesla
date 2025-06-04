@@ -1,0 +1,147 @@
+/* Base font settings */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdfdfd;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 60px;
+}
+
+.custom-navbar,
+.custom-navbar .nav-link {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600; /* optional: medium-bold */
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.text-muted {
+    color: #6c757d !important;
+}
+
+.page-section {
+    padding: 100px 20px;
+}
+
+.btn {
+    border-radius: 30px;
+    padding: 10px 24px;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-dark {
+    background-color: #171a20;
+    color: white;
+    border: none;
+}
+
+.btn-dark:hover {
+    background-color: #333;
+}
+
+/*input.form-control {
+    border-radius: 12px;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+}*/
+
+input.form-control:focus {
+    box-shadow: none;
+    border-color: #000;
+}
+
+.navbar {
+    background-color: red; 
+    border-bottom: none; 
+    padding: 0.75rem 1.5rem;
+}
+
+.nav-link {
+    font-family: 'Segoe UI', sans-serif; 
+    font-size: 18px;
+    font-weight: 500; 
+    color: white !important;
+    text-transform: uppercase; 
+}
+
+.navbar .d-flex {
+    gap: 1rem;
+}
+
+
+.nav-link:hover {
+ color: #555 !important;
+}
+
+.navbar-brand img {
+    height: 40px;
+    object-fit: contain;
+}
+
+.navbar .mx-auto {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.hero-section {
+/*    width: 100vw;           */
+    height: 100vh;          
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;       
+    padding: 0 1rem;        
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 0;
+}
+
+.second-section {
+    height: 100vh;
+    background-color: #111;
+}
+
+@media (max-width: 768px) {
+    .navbar .mx-auto {
+        display: none;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
