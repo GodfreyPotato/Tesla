@@ -128,12 +128,12 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>@Html.DisplayNameFor(model => model.id)</th>
-                            <th>@Html.DisplayNameFor(model => model.prod_name)</th>
-                            <th>@Html.DisplayNameFor(model => model.prod_description)</th>
-                            <th>@Html.DisplayNameFor(model => model.price)</th>
-                            <th>@Html.DisplayNameFor(model => model.prod_img)</th>
-                            <th>@Html.DisplayNameFor(model => model.cat_id)</th>
+                           
+                            <th>Product Name</th>
+                            <th>Product Description</th>
+                            <th>Price</th>
+                            <th>Image</th>
+                            <th>Category Id</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -141,7 +141,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => item.id)</td>
+                             
                                 <td>@Html.DisplayFor(modelItem => item.prod_name)</td>
                                 <td>@Html.DisplayFor(modelItem => item.prod_description)</td>
                                 <td>@Html.DisplayFor(modelItem => item.price)</td>
