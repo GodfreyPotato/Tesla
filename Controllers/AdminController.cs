@@ -48,6 +48,11 @@ namespace tesla.Controllers
         }
 
         public IActionResult OrderList(string? status) {
+            if (HttpContext.Session.GetString("role") != "admin")
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
             var orders = getOrders();
 
             if (!string.IsNullOrEmpty(status))
