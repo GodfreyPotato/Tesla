@@ -2,7 +2,7 @@
 @{
     @if (ViewBag.Message != null)
     {
-        <div class="alert @(ViewBag.Message.Contains("Invalid") ? "alert-danger" : "alert-success") mt-3">
+        <div class="alert @(ViewBag.Message.Contains("Invalid") || ViewBag.Message.Contains("invalid") ? "alert-danger" : "alert-success") mt-3">
             @ViewBag.Message
         </div>
     }
