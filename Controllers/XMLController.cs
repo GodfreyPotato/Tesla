@@ -5,6 +5,7 @@ using System.Xml;
 using tesla.Models;
 using practiceQuiz.DataAccess;
 using System.Data;
+using System.Xml.Linq;
 
 namespace tesla.Controllers
 {
@@ -113,7 +114,7 @@ namespace tesla.Controllers
                 if(cat_id != null)
                 {
                     string query = $"insert into products(prod_name, prod_description,price, prod_img, cat_id) values ('{prodName}','{prodDesc}',{price},'{img}', {cat_id})";
-                    helper.execute(query);
+                    helper.execute(query); 
                 }
                 else
                 {
@@ -121,6 +122,45 @@ namespace tesla.Controllers
                     helper.execute(query);
                 }
                 }
+        }
+
+        public IActionResult ExportXML()
+        {
+            DataTable products = helper.read("SELECT * FROM products");
+            List<Product> prods = new List<Product>();
+
+            foreach(DataRow dr in products.Rows)
+            {
+                prods.Add(new Product
+                {
+                    prod_name = dr["prod_name"].ToString(),
+                    prod_description = dr["prod_description"].ToString(),
+                    price = decimal.Parse(dr["price"].ToString()),
+                    prod_img = string.IsNullOrWhiteSpace(dr["prod_img"].ToString()) ? "" : dr["prod_img"].ToString(),
+                    cat_id = string.IsNullOrWhiteSpace(dr["cat_id"].ToString()) ? null : int.Parse(dr["cat_id"].ToString())
+                });
+            }
+
+            WriteProductsToXml(prods);
+            return Content("XML Exported");
+        }
+
+
+
+        private void WriteProductsToXml(List<Product> products)
+        {
+            XDocument xmlDoc = new XDocument(new XElement("Products",
+                products.Select(p => new XElement(
+                    "Product",
+                        new XElement("prod_name", p.prod_name),
+                        new XElement("prod_description", p.prod_description),
+                        new XElement("price", p.price),
+                         new XElement("prod_img", string.IsNullOrWhiteSpace(p.prod_img) ? "" : p.prod_img ),
+                          new XElement("cat_id", string.IsNullOrWhiteSpace (p.cat_id.ToString()) ? "" : p.cat_id)
+                        ))));
+
+
+            xmlDoc.Save(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Schemas","Products.xml"));
         }
     }
 }

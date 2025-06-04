@@ -32,9 +32,10 @@ namespace tesla.Controllers
                     id = int.Parse(dr["id"].ToString()),
                     prod_name = dr["prod_name"].ToString(),
                     prod_description = dr["prod_description"].ToString(),
-                    prod_img = dr["prod_img"].ToString(),
+                    prod_img = string.IsNullOrWhiteSpace(dr["prod_img"].ToString()) ? null : dr["prod_img"].ToString(),
                     price = decimal.Parse(dr["price"].ToString()),
-                    cat_id = int.Parse(dr["cat_id"].ToString())
+                    cat_id = string.IsNullOrWhiteSpace(dr["cat_id"]?.ToString()) ? null : int.Parse(dr["cat_id"].ToString())
+
                 });
             }
 

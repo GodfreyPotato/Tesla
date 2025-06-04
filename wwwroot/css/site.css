@@ -10,7 +10,7 @@ body {
     color: #000;
     margin: 0;
     padding: 0;
-    margin-bottom: 60px;
+    margin-bottom: 60px !important;
 }
 
 .custom-navbar,
@@ -95,7 +95,6 @@ input.form-control:focus {
 }
 
 .hero-section {
-/*    width: 100vw;           */
     height: 100vh;          
     background-color: #000;
     color: #fff;

@@ -80,7 +80,7 @@ namespace tesla.Controllers
         public IActionResult ShowProducts()
         {
             List<Product> products = new List<Product>();
-            DataTable dt = _helper.read("SELECT * FROM products");
+            DataTable dt = _helper.read("SELECT * FROM products where cat_id != null and prod_img !=null");
 
             foreach (DataRow dr in dt.Rows)
             {

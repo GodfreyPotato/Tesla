@@ -18,8 +18,8 @@ namespace tesla.Models
         public decimal price { get; set; }
        
         public string? prod_img { get; set; }
-
-        public int cat_id { get; set; }
+        [Required]
+        public int? cat_id { get; set; }
 
         [NotMapped] 
         public IFormFile? ImageFile { get; set; }

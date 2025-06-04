@@ -55,8 +55,50 @@
 
 
 
+<<<<<<< HEAD
 
                 </form>
+=======
+<hr />
+<div class="d-flex justify-content-center align-items-center">
+    <div class="card shadow rounded p-3">
+        <form asp-action="AddProduct" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="prod_name" class="control-label">Product Name</label>
+                <input asp-for="prod_name" class="form-control" />
+                <span asp-validation-for="prod_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="prod_description" class="control-label"></label>
+                <input asp-for="prod_description" class="form-control" />
+                <span asp-validation-for="prod_description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" class="form-control" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group">
+                <label asp-for="prod_img" class="control-label"></label>
+                <input type="file" asp-for="ImageFile" class="form-control" />
+                <span asp-validation-for="prod_img" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cat_id" class="control-label">Category</label>
+                <select name="cat_id" class="form-control" asp-for="cat_id">
+                    @foreach (var cat in ViewBag.Categories)
+                    {
+                        <option value="@cat.id">@cat.cat_name</option>
+                    }
+                </select>
+                <span asp-validation-for="cat_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+>>>>>>> 24b18a23d2c29e0d9c7aae592131596c5d1fccfd
             </div>
 
     <div class="mt-4 text-center">
