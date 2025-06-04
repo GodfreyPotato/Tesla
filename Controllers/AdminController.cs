@@ -16,10 +16,10 @@ namespace tesla.Controllers
         }
         public IActionResult ProductList()
         {
-            if(HttpContext.Session.GetString("role") != "admin")
+/*            if(HttpContext.Session.GetString("role") != "admin")
             {
                 return RedirectToAction("Login", "Auth");
-            }
+            }*/
             ViewBag.img = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/productImages");
             return View(getProducts());
         }
