@@ -19,7 +19,6 @@ namespace tesla.Models
        
         public string? prod_img { get; set; }
 
-        [Required]
         public int cat_id { get; set; }
 
         [NotMapped] 
