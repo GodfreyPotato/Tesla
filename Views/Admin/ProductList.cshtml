@@ -58,10 +58,24 @@
                             @Html.DisplayFor(modelItem => item.price)
                         </td>
                         <td>
-                            <img src="@Url.Content("~/productImages/" + item.prod_img)" width="200" />
+                            @if(item.prod_img != null)
+                            {
+                                <img src="@Url.Content("~/productImages/" + item.prod_img)" width="200" />
+                            }
+                            else
+                            {
+                               <span>No Image</span>
+                            }
+
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.cat_id)
+                            @if(item.cat_id != null)
+                            {
+                                @Html.DisplayFor(modelItem => item.cat_id)
+                            }else
+                            {
+                            <span>No Category</span>
+                            }
                         </td>
                         <td>
                             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

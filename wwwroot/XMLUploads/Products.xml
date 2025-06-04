@@ -1,19 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Products>
-	<Product>
-		<prod_name>
+  <Product>
+    <prod_name>IPhone 1</prod_name>
+    <prod_description>testing description</prod_description>
+    <price>2342</price>
+    <prod_img>Screenshot (1)_f22eeadf-de18-4b98-8ade-7ee90a5c219d.png</prod_img>
+    <cat_id>1</cat_id>
+  </Product>
+  <Product>
+    <prod_name>IPhone 1</prod_name>
+    <prod_description>testing description</prod_description>
+    <price>2342</price>
+    <prod_img>Screenshot (1)_7cc49856-7b3d-4efd-a278-69b23227a46d.png</prod_img>
+    <cat_id>1</cat_id>
+  </Product>
+  <Product>
+    <prod_name>
 			Name
 		</prod_name>
-		<prod_description>
+    <prod_description>
 			Description
 		</prod_description>
-		<price>
-			1200
-		</price>
-		<prod_img>
-			
-		</prod_img>
-		<cat_id>
-		</cat_id>
-	</Product>
+    <price>1200</price>
+    <prod_img></prod_img>
+    <cat_id></cat_id>
+  </Product>
+  <Product>
+    <prod_name>
+			Name
+		</prod_name>
+    <prod_description>
+			Description
+		</prod_description>
+    <price>1200</price>
+    <prod_img></prod_img>
+    <cat_id></cat_id>
+  </Product>
 </Products>

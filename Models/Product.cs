@@ -19,7 +19,7 @@ namespace tesla.Models
        
         public string? prod_img { get; set; }
         [Required]
-        public int cat_id { get; set; }
+        public int? cat_id { get; set; }
 
         [NotMapped] 
         public IFormFile? ImageFile { get; set; }
