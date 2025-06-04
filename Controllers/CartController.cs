@@ -13,10 +13,54 @@ namespace Tesla.Controllers
             _helper = new DatabaseHelper();
         }
         private static List<CartItem> cartItems = new List<CartItem>();
+        private int GetOrCreateCartId()
+        {
+            // If user is logged in, use their user_id (adjust as needed)
+            if (User.Identity.IsAuthenticated)
+            {
+                // Example: parse user_id from claims or session
+                // Replace with your actual logic to get user_id
+                return int.Parse(User.Identity.Name);
+            }
+            // For guests, use a cookie to store a session cart ID
+            if (Request.Cookies.ContainsKey("GuestCartId"))
+            {
+                return int.Parse(Request.Cookies["GuestCartId"]);
+            }
+            else
+            {
+                // Generate a new random cart ID for the guest
+                var guestCartId = new Random().Next(100000, 999999);
+                Response.Cookies.Append("GuestCartId", guestCartId.ToString(), new Microsoft.AspNetCore.Http.CookieOptions
+                {
+                    Expires = DateTimeOffset.UtcNow.AddDays(7)
+                });
+                return guestCartId;
+            }
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult AddToCart(CartItem model)
         {
+            model.cart_id = GetOrCreateCartId(); // Set cart_id based on user or guest session
+            string checkCartQuery = $"SELECT COUNT(*) FROM cart WHERE id = {model.cart_id}";
+            var cartExists = Convert.ToInt32(_helper.scalar(checkCartQuery)) > 0;
+            if (!cartExists)
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    // Insert cart for logged-in user
+                    string insertCartQuery = $"INSERT INTO cart (id, user_id) VALUES ({model.cart_id}, {model.cart_id})";
+                    _helper.execute(insertCartQuery);
+                }
+                else
+                {
+                    // Insert cart for guest (no user_id, but with sessionId)
+                    string insertCartQuery = $"INSERT INTO cart (id, sessionId) VALUES ({model.cart_id}, '{Request.Cookies["GuestCartId"]}')";
+                    _helper.execute(insertCartQuery);
+                }
+            }
+
             if (!ModelState.IsValid)//flipped idk ytf it doesn't proceed when its ModelState.IsValid
             {
                 var existingItem = cartItems.FirstOrDefault(c => c.product_id == model.product_id && c.cart_id == model.cart_id);
@@ -48,7 +92,7 @@ namespace Tesla.Controllers
                     // OH MY GOD CASCADING PALA... hinde na ako marunong magprogram, taena sori guys T_T 
                     // Two hours ako na stuck doon
                     // Pero walang session pa guys
-                    return RedirectToAction("ShowCart");
+                    //return RedirectToAction("ShowCart");
                 }
 
                 return RedirectToAction("ShowCart");
