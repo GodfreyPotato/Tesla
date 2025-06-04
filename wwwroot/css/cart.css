@@ -1,0 +1,17 @@
+.cart-image-container {
+    height: 220px;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-product-image {
+    max-height: 200px;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.cart-update-input {
+    width: 80px;
+}

@@ -1,0 +1,49 @@
+@model List<tesla.Models.CartItemView>
+
+@{
+    ViewData["Title"] = "Your Cart";
+}
+
+<link rel="stylesheet" href="~/css/cart.css" />
+
+<h2>Your Cart</h2>
+
+@if (!Model.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="cart-image-container">
+                        <img src="@Url.Content("~/productImages/" + item.prod_img)" class="card-img-top cart-product-image" alt="@item.prod_name" />
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.prod_name</h5>
+                        <form asp-action="UpdateQuantity" asp-controller="Cart" method="post" class="mb-2">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="product_id" value="@item.product_id" />
+                            <input type="hidden" name="cart_id" value="@item.cart_id" />
+                            <div class="input-group">
+                                <input type="number" name="quantity" value="@item.quantity" min="1" class="form-control cart-update-input" />
+                                <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>
+                            </div>
+                        </form>
+                        <p class="card-text mb-1">Price: <strong>@item.price.ToString("C")</strong></p>
+                        <p class="card-text"><small class="text-muted">Added: @item.date</small></p>
+                        <form asp-action="RemoveFromCart" asp-controller="Cart" method="post" onsubmit="return confirm('Remove this item?');">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="product_id" value="@item.product_id" />
+                            <input type="hidden" name="cart_id" value="@item.cart_id" />
+                            <button type="submit" class="btn btn-danger btn-sm mt-2">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
