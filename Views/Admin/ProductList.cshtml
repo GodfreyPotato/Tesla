@@ -58,9 +58,14 @@
             <div class="container">
                 <div class="inventory-actions">
                     <h2>Inventory</h2>
-                    <a asp-controller="Product" asp-action="AddProduct">
-                        <button class="create-prod-btn">Create new product</button>
-                    </a>
+                    <div>
+                        <a asp-controller="Category" asp-action="AddCategory">
+                            <button class="create-prod-btn">New category</button>
+                        </a>
+                        <a asp-controller="Product" asp-action="AddProduct">
+                            <button class="create-prod-btn">New product</button>
+                        </a>
+                    </div>
                 </div>
 
         <p>
