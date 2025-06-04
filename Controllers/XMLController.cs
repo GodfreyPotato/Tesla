@@ -88,7 +88,7 @@ namespace tesla.Controllers
                 catch(Exception e)
                 {
 
-                    return Content("Error");
+                    return Content($"Error {e.Message}");
                 }
               
             }
@@ -105,10 +105,22 @@ namespace tesla.Controllers
             XmlNodeList products = doc.SelectNodes("/Products/Product");
                 foreach (XmlNode product in products)
                 {
-                    string query = $"insert into products(prod_name, prod_description,price) values ('{product["prod_name"].InnerText}','{product["prod_description"].InnerText}',{decimal.Parse(product["price"].InnerText)})";
+                string prodName = product["prod_name"].InnerText;
+                string prodDesc = product["prod_description"].InnerText;
+                decimal price = decimal.Parse(product["price"].InnerText);
+                string img = product["prod_img"].InnerText != "" ? product["prod_img"].InnerText : null;
+                string cat_id = product["cat_id"].InnerText != "" ? product["cat_id"].InnerText  : null;
+                if(cat_id != null)
+                {
+                    string query = $"insert into products(prod_name, prod_description,price, prod_img, cat_id) values ('{prodName}','{prodDesc}',{price},'{img}', {cat_id})";
                     helper.execute(query);
                 }
-           
+                else
+                {
+                    string query = $"insert into products(prod_name, prod_description,price, prod_img) values ('{prodName}','{prodDesc}',{price},'{img}')";
+                    helper.execute(query);
+                }
+                }
         }
     }
 }
