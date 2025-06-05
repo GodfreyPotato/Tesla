@@ -1,8 +1,21 @@
 @model List<tesla.Models.Category>
 
-<h2>Categories</h2>
+<div class="container">
+    <div class="text-center txtpost">
+        <h3>Categories</h3>
+    </div>
+</div>
 
 <style>
+    .txtpost {
+        padding-top: 30px;
+        font-size: 18px;
+    }
+    .padds {
+        padding: 50px;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
     .category-card-link {
         text-decoration: none;
         color: inherit;
@@ -16,21 +29,23 @@
     }
 </style>
 
-<div class="row">
-    @foreach (var category in Model)
-    {
-        <div class="col-md-4 mb-4">
-            <a href="@Url.Action("ByCategory", "Product", new { categoryId = category.id })" class="category-card-link">
-                <div class="card h-100 category-card">
-                    <div class="card-body">
-                        <h5 class="card-title">@category.cat_name</h5>
-                        <p class="card-text">@category.cat_description</p>
+<div class="padds">
+    <div class="row">
+        @foreach (var category in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <a href="@Url.Action("ByCategory", "Product", new { categoryId = category.id })" class="category-card-link">
+                    <div class="card h-100 category-card">
+                        <div class="card-body">
+                            <h5 class="card-title">@category.cat_name</h5>
+                            <p class="card-text">@category.cat_description</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">ID: @category.id</small>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <small class="text-muted">ID: @category.id</small>
-                    </div>
-                </div>
-            </a>
-        </div>
-    }
+                </a>
+            </div>
+        }
+    </div>
 </div>
