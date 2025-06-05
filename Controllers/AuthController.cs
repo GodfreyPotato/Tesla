@@ -59,7 +59,7 @@ namespace tesla.Controllers
                                     _helper.execute($"insert into cartitems (product_id, quantity, date, cart_id) values ({dr["product_id"].ToString()}, {dr["quantity"].ToString()}, '{DateTime.Today:yyyy-MM-dd}', {userCartId}) ON DUPLICATE KEY UPDATE quantity = quantity + {int.Parse(dr["quantity"].ToString())}");
                                 }
 
-                            //_helper.execute($"delete from cart where user_id IS null");
+                            _helper.execute($"delete from cart where user_id IS null");
                             return RedirectToAction("ShowProducts", "Product");
                         }
                     }
