@@ -99,5 +99,33 @@ namespace tesla.Controllers
             ViewBag.Categories = getCategories();
             return View("~/Views/Home/home.cshtml", products); //VSCode navigation
         }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            string query = $"SELECT * FROM products WHERE id = {id}";
+            DataTable dt = _helper.read(query);
+
+            if (dt.Rows.Count == 0)
+            {
+                return NotFound();
+            }
+
+            DataRow dr = dt.Rows[0];
+
+            Product product = new Product
+            {
+                id = Convert.ToInt32(dr["id"]),
+                prod_name = dr["prod_name"].ToString(),
+                prod_description = dr["prod_description"].ToString(),
+                price = Convert.ToDecimal(dr["price"]),
+                prod_img = dr["prod_img"].ToString(),
+                cat_id = Convert.ToInt32(dr["cat_id"])
+            };
+
+            return View(product);
+        }
+
+
     }
 }

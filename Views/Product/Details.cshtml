@@ -1,0 +1,256 @@
+﻿<style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+
+    .product-detail-container.container {
+        max-width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+
+    .product-detail-container {
+        padding-top: 0;
+        padding-bottom: 0;
+        min-height: 100vh;
+        background-color: #F4F4F4;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .product-section,
+    .more-info-section {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .product-section {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        gap: 40px;
+        margin-bottom: 0;
+        min-height: 600px;
+    }
+
+    .product-image-wrapper {
+        flex: 1 1 50%;
+        background-color: lightgrey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-radius: 0;
+    }
+
+
+    .prod-detail-img {
+        max-width: 80%;
+        max-height: 400px;
+        object-fit: contain;
+        display: block;
+    }
+
+
+    .product-details-wrapper {
+        flex: 1 1 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        text-align: center;
+    }
+
+    .product-details {
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+        margin-top: 175px;
+    }
+
+
+    .product-details {
+        max-width: 600px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .product-title {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .product-description {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .product-price {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    .add-to-cart-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .add-to-cart-btn:hover {
+            background-color: #0056b3;
+        }
+
+    .more-info-section {
+        background-color: #eaeaea;
+        padding: 60px 20px;
+    }
+
+    .vehicle-card {
+        background-color: white;
+        transition: transform 0.3s ease;
+        padding: 20px;
+        border-radius: 0;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+        .vehicle-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .vehicle-card .row {
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .vehicle-card .col-7 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .vehicle-card .col-5 {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .vehicle-card img {
+            max-height: 250px;
+            object-fit: contain;
+            border-radius: 0; /* no rounding */
+            max-width: 100%;
+        }
+
+    .order-btn,
+    .learn-more-btn {
+        background-color: #000;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        margin-right: 10px;
+        margin-top: 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .learn-more-btn {
+        background-color: transparent;
+        color: #007bff;
+        border: 1px solid #007bff;
+    }
+
+        .learn-more-btn:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+    .more-info-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+        .more-info-section > .row {
+            max-width: 1140px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+</style>
+
+@model tesla.Models.Product
+
+@{
+    ViewData["Title"] = Model.prod_name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container product-detail-container">
+    <!-- Product Section -->
+    <section class="product-section">
+        <!-- Left: Image without card -->
+        <div class="product-image-wrapper">
+            <img class="prod-detail-img" src="~/productImages/@Model.prod_img" alt="@Model.prod_name" />
+        </div>
+
+        <!-- Right: Details wrapper to center content -->
+        <div class="product-details-wrapper">
+            <div class="product-details">
+                <h1 class="product-title mb-5">@Model.prod_name</h1>
+                <p class="product-description">@Model.prod_description</p>
+                <p class="product-price">$@Model.price</p>
+                <button class="add-to-cart-btn">Add to cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Info -->
+    <section class="more-info-section text-center">
+        <h2 style="font-weight:800">The best out there</h2>
+        <div class="row justify-content-center mt-4">
+
+            <div class="vehicle-card">
+                <div class="row align-items-center">
+                    <div class="col-7 text-start">
+                        <h3>The Future is Sustainable</h3>
+                        <p>We’re building a world powered by solar energy, running on batteries and transported by electric vehicles. Explore the most recent impact of our products, people and supply chain.</p>
+                    </div>
+                    <div class="col-5 text-end">
+                        <img src="~/images/vehicles.png" alt="vehicles" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="vehicle-card">
+                <div class="row align-items-center">
+                    <div class="col-7 text-start">
+                        <h3>Power Earth</h3>
+                        <p>We design sustainable systems that are massively scalable—resulting in the greatest environmental benefit possible. Our energy generation and storage products work together with our electric vehicles to amplify their impact.</p>
+                    </div>
+                    <div class="col-5 text-end">
+                        <img src="~/images/solar.png" alt="solar" class="img-fluid" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>

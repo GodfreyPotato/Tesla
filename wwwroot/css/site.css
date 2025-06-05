@@ -16,8 +16,8 @@ body {
 .custom-navbar,
 .custom-navbar .nav-link {
     font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 600; /* optional: medium-bold */
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -68,11 +68,11 @@ input.form-control:focus {
 }
 
 .nav-link {
-    font-family: 'Segoe UI', sans-serif; 
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
-    font-weight: 500; 
+    font-weight: 500;
     color: white !important;
-    text-transform: uppercase; 
+    text-transform: uppercase;
 }
 
 .navbar .d-flex {
@@ -201,6 +201,45 @@ input.form-control:focus {
         background-color: #0056b3;
     }
 
+.table,
+.table thead,
+.table tbody,
+.table tr,
+.table td,
+.table th {
+    background-color: transparent !important;
+}
+
+.product-img {
+    width: 175px;
+    height: 100px;
+    object-fit:cover !important;
+    border-radius: 8px;
+}
+
+.action-link {
+    background: none;
+    border: none;
+    color: #007bff;
+    padding: 0;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+    .action-link:hover {
+        color: #0056b3;
+        text-decoration: none;
+    }
+
+.action-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+
 
 /* ADD PRODUCT (AddProduct.cshtml) */
 
@@ -285,3 +324,5 @@ input.form-control:focus {
     .custom-upload-btn:hover {
         background-color: #0056b3;
     }
+
+/* DETAILS.CSHTML */
