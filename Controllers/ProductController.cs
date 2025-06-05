@@ -95,5 +95,25 @@ namespace tesla.Controllers
             ViewBag.Categories = getCategories();
             return View(products);
         }
+
+
+        [HttpGet]
+        public JsonResult SearchProduct(string? keyword = "")
+        {
+            DataTable dt = _helper.read($"SELECT * FROM products WHERE prod_name LIKE '%{keyword}%'");
+
+            var results = new List<object>();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                results.Add(new
+                {
+                    id = dr["id"].ToString(),
+                    name = dr["prod_name"].ToString()
+                });
+            }
+
+            return Json(results);
+        }
     }
 }
