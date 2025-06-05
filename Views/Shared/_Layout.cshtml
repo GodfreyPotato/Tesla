@@ -15,29 +15,29 @@
 
     <style>
         #result {
-            position: absolute;
-            top: 100%; /* Push it below the input */
-            display:flex;
-            flex-direction:column;
-            right: 10%;
-            z-index: 1000;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-top: none;
-            max-height: 300px;
-            width: 200px;
-            overflow-y: auto;
-       
+        position: absolute;
+        top: 100%; /* Push it below the input */
+        display:flex;
+        flex-direction:column;
+        right: 10%;
+        z-index: 1000;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-top: none;
+        max-height: 300px;
+        width: 200px;
+        overflow-y: auto;
+
         }
 
         #result .dropdown-item {
-                padding: 8px 12px;
-                cursor: pointer;
-            }
+        padding: 8px 12px;
+        cursor: pointer;
+        }
 
         #result .dropdown-item:hover {
-                    background-color: #f8f9fa;
-                }
+        background-color: #f8f9fa;
+        }
     </style>
 </head>
 
@@ -76,8 +76,12 @@
                         <a class="nav-link">Hello  @Context.Session.GetString("firstname")</a>
                     }
 
-                    <a class="nav-link" asp-controller="Profile" asp-action="Index" title="Profile"><img src="~/images/profile-icon.svg" alt="profile" class="profile-icon" style="width:24px; height:24px;" /></a>
-                   
+                    @if (!string.IsNullOrEmpty(Context.Session.GetString("id")))
+                    {
+
+                        <a class="nav-link" asp-controller="Profile" asp-action="ShowProfile" title="Profile"><img src="~/images/profile-icon.svg" alt="profile" class="profile-icon" style="width:24px; height:24px;" /></a>
+                    }
+
                     <input type="text" name="search" id="searchBox" value="" />
                     
                       <ul id="result">
