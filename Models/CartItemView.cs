@@ -2,6 +2,7 @@ namespace tesla.Models
 {
     public class CartItemView
     {
+        public int id { get; set; }
         //Cart items
         public int product_id { get; set; }
         public int quantity { get; set; }

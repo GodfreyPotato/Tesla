@@ -32,7 +32,23 @@ namespace tesla.Controllers
                     if (dt.Rows[0]["password"].ToString() == login.password)
                     {
                         HttpContext.Session.SetString("role",dt.Rows[0]["role"].ToString());
-                        return RedirectToAction("ShowProducts", "Product");
+                        HttpContext.Session.SetString("id", dt.Rows[0]["id"].ToString());
+
+                        HttpContext.Session.SetString("firstname", dt.Rows[0]["firstname"].ToString());
+
+                        if (HttpContext.Session.GetString("notLogged") == "true")
+                        {
+
+                            DataTable logged = _helper.read("select *,cart.id as id from cart join cartitems on cart.id = cartitems.cart_id join products on products.id = cartitems.product_id where cart.user_id IS null");
+
+                            foreach (DataRow dr in logged.Rows)
+                            {
+                                _helper.execute($"insert into cartItems (product_id, quantity, date, cart_id) values ({dr["product_id"].ToString()}, {dr["quantity"].ToString()}, '{DateTime.Today:yyyy-MM-dd}', {dr["id"].ToString()}) ON DUPLICATE KEY UPDATE quantity = quantity + {int.Parse(dr["quantity"].ToString())}");
+                            }
+
+                            _helper.execute($"delete from cart where user_id IS null");
+                            return RedirectToAction("ShowProducts", "Product");
+                        }
                     }
                     else
                     {

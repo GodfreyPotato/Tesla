@@ -145,6 +145,14 @@ input.form-control:focus {
     }
 }
 
+
+/* Footer */
+
+.footer {
+
+    padding-top: 2rem;
+    text-align: center;
+}
 /* PRODUCT LIST (ProductList.cshtml) */
 
 .create-prod-btn {

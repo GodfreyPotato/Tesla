@@ -41,7 +41,7 @@ namespace practiceQuiz.DataAccess
                 }
             }
         }
-        
+
         public int executeWParameters(string query, Dictionary<string, object> parameters = null)
         {
             using (MySqlConnection con = new MySqlConnection(_conStr))
@@ -59,6 +59,20 @@ namespace practiceQuiz.DataAccess
                     return cmd.ExecuteNonQuery();
                 }
             }
+        }
+
+        public object scalar(string query)
+        {
+            object result = null;
+            using (var conn = new MySqlConnection(_conStr))
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    result = cmd.ExecuteScalar();
+                }
+            }
+            return result;
         }
     }
 }

@@ -48,7 +48,7 @@ namespace tesla.Controllers
         {
             List<Product> products = new List<Product>();
 
-            DataTable dt = _helper.read("Select * from products;");
+            DataTable dt = _helper.read("Select * from products join categories on products.cat_id = categories.id;");
 
             foreach (DataRow dr in dt.Rows)
             {
