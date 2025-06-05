@@ -60,6 +60,28 @@ namespace practiceQuiz.DataAccess
                 }
             }
         }
+        public async Task<DataTable> readAsync(string query)
+        {
+            using (var conn = new MySqlConnection(_conStr))
+            using (var cmd = new MySqlCommand(query, conn))
+            {
+                await conn.OpenAsync();
+                var reader = await cmd.ExecuteReaderAsync();
+
+                var dt = new DataTable();
+                dt.Load(reader);
+                return dt;
+            }
+        }
+        public async Task executeAsync(string query)
+        {
+            using (var conn = new MySqlConnection(_conStr))
+            using (var cmd = new MySqlCommand(query, conn))
+            {
+                await conn.OpenAsync();
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
 
         public object scalar(string query)
         {

@@ -75,6 +75,7 @@ namespace tesla.Controllers
         [HttpGet]
         public IActionResult ShowProducts()
         {
+         
 
             List<Product> products = new List<Product>();
             DataTable dt = _helper.read("SELECT * FROM products where cat_id != '' and prod_img != ''");

@@ -69,9 +69,7 @@ else
                     <div class="card-body">
                         <h5 class="card-title">@item.prod_name</h5>
                         <form asp-action="UpdateQuantity"  method="post" class="mb-2">
-                          
-                           
-                            <div class="input-group">
+                                <div class="input-group">
                                 <input type="hidden" name="id" value="@item.id" />
                                 <input type="number" name="quantity" value="@item.quantity" min="1" class="form-control cart-update-input" />
                                 <button type="submit" class="btn btn-sm btn-outline-primary">Update</button>

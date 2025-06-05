@@ -39,7 +39,7 @@ namespace tesla.Controllers
                         if (HttpContext.Session.GetString("notLogged") == "true")
                         {
 
-                            DataTable logged = _helper.read("select *,cart.id as id from cart join cartitems on cart.id = cartitems.cart_id join products on products.id = cartitems.product_idgit p where cart.user_id IS null");
+                            DataTable logged = _helper.read("select *,cart.id as id from cart join cartitems on cart.id = cartitems.cart_id join products on products.id = cartitems.product_id where cart.user_id IS null");
 
                             foreach (DataRow dr in logged.Rows)
                             {

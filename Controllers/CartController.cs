@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using practiceQuiz.DataAccess;
 using System.Data;
 using System.Text.Json;
+using System.Threading.Tasks;
 using tesla.Models;
 
 namespace Tesla.Controllers
@@ -115,12 +116,33 @@ namespace Tesla.Controllers
         }
 
         [HttpGet]
-        public IActionResult Checkout()
+        public async Task<IActionResult> Checkout()
         {
             if (HttpContext.Session.GetString("role") == "customer")
             {
-                //gab pa connect don sa ginawa mong order
-                return RedirectToAction("");
+                var dt = _helper.read($"select * from cart where user_id = {HttpContext.Session.GetString("id")}");
+                var id = dt.Rows[0]["id"];//cart id
+                var user = _helper.read($"select * from users where id = {HttpContext.Session.GetString("id")}");
+                var address = user.Rows[0]["address"];
+
+                DataTable fetchCart = _helper.read($"select * from cartitems join products on cartitems.product_id = products.id where cart_id = {id}");
+                decimal totalPrice = 0;
+                foreach (DataRow dr in fetchCart.Rows)
+                {
+                    totalPrice += (decimal.Parse(dr["price"].ToString()) * decimal.Parse(dr["quantity"].ToString()));
+                }
+
+                try
+                {
+                    _helper.execute($"insert into orders(cart_id, user_id, address, totalAmount, date) values ({id}, {HttpContext.Session.GetString("id")},'{address}', {totalPrice}, {DateTime.Today:yyyy-MM-dd}) ");
+                   
+                }
+                catch (Exception e)
+                {
+                    return Content("Something went wrong");
+                }
+                return RedirectToAction("OrderList", "Admin");
+
             }
             else if(string.IsNullOrWhiteSpace(HttpContext.Session.GetString("role")))
             {
@@ -131,5 +153,7 @@ namespace Tesla.Controllers
                 return Unauthorized();
             }
         }
+
+        
     }
 }
