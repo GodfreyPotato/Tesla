@@ -58,9 +58,9 @@
                 <!-- Center Group: Navigation Links -->
 
                 <div class="nav-left d-flex align-items-center gap-4">
-                    <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
                     <a class="nav-link" asp-controller="Product" asp-action="ShowProducts">Products</a>
-                    <a class="nav-link" asp-controller="Category" asp-action="ShowCategory">Categories</a>
+                    <a class="nav-link" asp-controller="Categories" asp-action="Index">Categories</a>
+                    <a class="nav-link" asp-controller="Categories" asp-action="Index">About Tesla</a>
                 </div>
 
                 <!-- Right Group -->
@@ -108,21 +108,15 @@
             }
         });
     </script>
+  
 
-
-    <!-- Footer -->
-    <footer class="border-top footer text-muted">
-        <div class="max-w-screen-xl mx-auto px-4 text-center space-y-2">
-            <div class="flex flex-wrap justify-center gap-4">
-                &copy; 2025 - Tesla, Inc. -
-                <a asp-area="" asp-controller="AboutUs" asp-action="AboutUs">About Us</a>
-                <a asp-area="" asp-controller="FAQ" asp-action="FAQ">FAQs</a>
-            </div>
-
-        </div>
-    </footer>
-
-
+<!-- Footer -->
+<footer class="border-top footer text-muted">
+    <div class="container mt-4">
+        &copy; 2025 Tesla - <a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-decoration: none">Privacy</a> / <a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-decoration: none">About</a> /
+        <a asp-area="" asp-controller="Home" asp-action="Privacy" style="text-decoration: none">FAQs</a> 
+    </div>
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
 

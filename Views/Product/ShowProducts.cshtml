@@ -4,13 +4,25 @@
 }
 
 <div class="container">
-    <div class="centered">
-        <h2>Products Menu</h2>
+    <div class="text-center txtpost">
+        <h3>Products Menu</h3>
     </div>
 </div>
 
+<style>
+    .padds {
+        padding: 50px;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+    .txtpost{
+        padding-top: 30px;
+        font-size:18px;
+    }
+</style>
+
 @Html.ValidationSummary()
-<div class="row">
+<div class="row padds">
     @foreach (var product in Model)
     {
         <div class="col-md-4 mb-4">

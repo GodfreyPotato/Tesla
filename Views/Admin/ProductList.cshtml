@@ -116,11 +116,17 @@
                 <div class="inventory-actions">
                     <h2>Inventory</h2>
                     <div>
+                        <a asp-controller="Product" asp-action="AddProduct">
+                            <button class="create-prod-btn">New product</button>
+                        </a>
                         <a asp-controller="Category" asp-action="AddCategory">
                             <button class="create-prod-btn">New category</button>
                         </a>
-                        <a asp-controller="Product" asp-action="AddProduct">
-                            <button class="create-prod-btn">New product</button>
+                        <a asp-controller="Category" asp-action="AddCategory">
+                            <button class="create-prod-btn">Manage Users</button>
+                        </a>
+                        <a asp-controller="Category" asp-action="AddCategory">
+                            <button class="create-prod-btn">Manage Orders</button>
                         </a>
                     </div>
                 </div>
@@ -148,7 +154,7 @@
                                 <td>
                                     @if (item.prod_img != null)
                                     {
-                                        <img src="@Url.Content("~/productImages/" + item.prod_img)" width="200" />
+                                        <img src="@Url.Content("~/productImages/" + item.prod_img)" class="product-img" alt="Product Image" />
                                     }
                                     else
                                     {
@@ -168,9 +174,9 @@
                                 </td>
                                 <td>
 
-                                    <div class="d-flex justify-content-center align-items-center">
+                                    <div class="action-group">
                                         <button type="button"
-                                                class="btn btn-primary editBtn"
+                                                class="action-link editBtn"
                                                 data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal"
                                                 data-id="@item.id"
@@ -184,13 +190,12 @@
 
                                         
 
-                                        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                                        <a href="@Url.Action("Details", "Product", new { id = item.id })" class="action-link">Details</a>
 
-                                        <form action="deleteProduct" method="post" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                        <form action="deleteProduct" method="post" style="display: inline">
                                             <input type="hidden" name="id" value="@item.id" />
-                                            <button class="btn btn-primary btn-sm" type="submit">Delete</button>
+                                            <button type="submit" class="action-link">Delete</button>
                                         </form>
-
 
                                     </div>
                                 </td>
@@ -201,6 +206,8 @@
             </div>
         </div>
 
+
+ 
     </div>
 </div>
 
