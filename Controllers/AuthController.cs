@@ -38,15 +38,28 @@ namespace tesla.Controllers
 
                         if (HttpContext.Session.GetString("notLogged") == "true")
                         {
-
+                              //kunin neto lahat ng 
                             DataTable logged = _helper.read("select *,cart.id as id from cart join cartitems on cart.id = cartitems.cart_id join products on products.id = cartitems.product_id where cart.user_id IS null");
-
-                            foreach (DataRow dr in logged.Rows)
+                            DataTable userTable = _helper.read($"select * from cart where user_id = {HttpContext.Session.GetString("id")} ");
+                            string userCartId = "";
+                            if (userTable.Rows.Count > 0)
                             {
-                                _helper.execute($"insert into cartItems (product_id, quantity, date, cart_id) values ({dr["product_id"].ToString()}, {dr["quantity"].ToString()}, '{DateTime.Today:yyyy-MM-dd}', {dr["id"].ToString()}) ON DUPLICATE KEY UPDATE quantity = quantity + {int.Parse(dr["quantity"].ToString())}");
+                                userCartId = userTable.Rows[0]["id"].ToString();
+
+                            }
+                            else
+                            {
+                                _helper.execute($"insert into cart(user_id) values ({HttpContext.Session.GetString("id")}) ");
+                                DataTable uTable = _helper.read($"select * from cart where user_id = {HttpContext.Session.GetString("id")} ");
+                                userCartId = uTable.Rows[0]["id"].ToString(); 
                             }
 
-                            _helper.execute($"delete from cart where user_id IS null");
+                                foreach (DataRow dr in logged.Rows)
+                                {
+                                    _helper.execute($"insert into cartitems (product_id, quantity, date, cart_id) values ({dr["product_id"].ToString()}, {dr["quantity"].ToString()}, '{DateTime.Today:yyyy-MM-dd}', {userCartId}) ON DUPLICATE KEY UPDATE quantity = quantity + {int.Parse(dr["quantity"].ToString())}");
+                                }
+
+                            //_helper.execute($"delete from cart where user_id IS null");
                             return RedirectToAction("ShowProducts", "Product");
                         }
                     }

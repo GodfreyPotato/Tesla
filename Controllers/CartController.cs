@@ -22,14 +22,14 @@ namespace Tesla.Controllers
             //not logged in
             if (string.IsNullOrWhiteSpace(HttpContext.Session.GetString("role")))
             {
+                //working
                 DataTable dt = _helper.read("select * from cart where user_id IS null");
                 HttpContext.Session.SetString("notLogged", "true");
                 if (dt.Rows.Count == 0)
                 {
                     _helper.execute("insert into cart (user_id) values (null)");
-
                 }
-                DataTable dtble = _helper.read("select * from cart where user_id IS null");
+                DataTable dtble = _helper.read("select * from cart where user_id IS NULL");
                 string id = dtble.Rows[0]["id"].ToString();
 
                 _helper.execute($"insert into cartItems (product_id, quantity, date, cart_id) values ({product_id}, 1, '{DateTime.Today:yyyy-MM-dd}', {id}) ON DUPLICATE KEY UPDATE quantity = quantity + 1");
@@ -41,7 +41,10 @@ namespace Tesla.Controllers
                 if (dt.Rows.Count == 0)
                 {
                     _helper.execute($"insert into cart (user_id) values ({HttpContext.Session.GetString("id")})");
+                    var cartTable = _helper.read($"select * from cart where user_id = {HttpContext.Session.GetString("id")}");
+                    var cartId = cartTable.Rows[0]["id"].ToString();
 
+                    _helper.execute($"insert into cartItems (product_id, quantity, date, cart_id) values ({product_id}, 1, '{DateTime.Today:yyyy-MM-dd}', {cartId}) ON DUPLICATE KEY UPDATE quantity = quantity + 1");
                 }
                 else
                 {
@@ -62,12 +65,13 @@ namespace Tesla.Controllers
             if (HttpContext.Session.GetString("role") == "customer")
             {
                 string user_id = HttpContext.Session.GetString("id");
-               DataTable query = _helper.read($"select *, cartItems.id as id from cart join cartItems on cart.id = cartItems.cart_id join products on cartItems.product_id = products.id where cart.user_id = {user_id}");
+                DataTable query = _helper.read($"select *, cartItems.id as id from cart join cartItems on cart.id = cartItems.cart_id join products on cartItems.product_id = products.id where cart.user_id = {user_id}");
                 List<CartItemView> cartItems = new List<CartItemView>();
 
-                foreach(DataRow dr in query.Rows)
+                foreach (DataRow dr in query.Rows)
                 {
-                    cartItems.Add(new CartItemView {
+                    cartItems.Add(new CartItemView
+                    {
                         id = int.Parse(dr["id"].ToString()),
                         cart_id = int.Parse(dr["cart_id"].ToString()),
                         date = dr["date"].ToString(),
@@ -77,13 +81,13 @@ namespace Tesla.Controllers
                         prod_name = dr["prod_name"].ToString(),
                         price = decimal.Parse(dr["price"].ToString())
 
-                        
+
                     });
                 }
                 return View(cartItems);
             }
-            else
-             {
+            else if (string.IsNullOrWhiteSpace(HttpContext.Session.GetString("role")))
+            {
                 string user_id = HttpContext.Session.GetString("id");
                 DataTable query = _helper.read($"select *, cartItems.id as id from cart join cartItems on cart.id = cartItems.cart_id join products on cartItems.product_id = products.id where cart.user_id IS null");
                 List<CartItemView> cartItems = new List<CartItemView>();
@@ -91,7 +95,8 @@ namespace Tesla.Controllers
                 foreach (DataRow dr in query.Rows)
                 {
                     cartItems.Add(new CartItemView
-                    { id = int.Parse(dr["id"].ToString()),
+                    {
+                        id = int.Parse(dr["id"].ToString()),
                         cart_id = int.Parse(dr["cart_id"].ToString()),
                         date = dr["date"].ToString(),
                         quantity = int.Parse(dr["quantity"].ToString()),
@@ -104,6 +109,9 @@ namespace Tesla.Controllers
                     });
                 }
                 return View(cartItems);
+            }
+            else {
+                return Unauthorized();
             }
                
         }
@@ -116,7 +124,7 @@ namespace Tesla.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Checkout()
+        public IActionResult Checkout()
         {
             if (HttpContext.Session.GetString("role") == "customer")
             {
@@ -141,11 +149,12 @@ namespace Tesla.Controllers
                 {
                     return Content("Something went wrong");
                 }
-                return RedirectToAction("OrderList", "Admin");
+                return RedirectToAction("ShowProducts", "Product");
 
             }
             else if(string.IsNullOrWhiteSpace(HttpContext.Session.GetString("role")))
             {
+                HttpContext.Session.SetString("notLogged", "true");
                 return RedirectToAction("Login", "Auth");
             }
             else
